@@ -1,0 +1,19 @@
+.template {
+  display: none;
+}
+
+.roomtype {
+  margin-top: 2px;
+}
+
+.roomtype:first-of-type {
+  margin-top: 0;
+}
+
+.roomtype label:first-child {
+  visibility: hidden;
+}
+
+.roomtype:first-of-type label:first-child {
+  visibility: visible;
+}

@@ -245,6 +245,42 @@ function switchSubmitOnCommentChange() {
   });
 }
 
+function setupRoomTypes(roomTypes) {
+  $("#roomtype_max").val(roomTypes.length);
+
+  roomTypes.forEach(function(roomType, idx) {
+    var i = idx + 1;
+    var element = $("#roomtype_template").clone();
+    element.attr("id", null);
+    element.removeClass("template");
+
+    element.find("label.btn").attr("id", "roomtype" + i + "button");
+    element.find("label.btn input").attr("id", "roomtype" + i);
+    element.find("label.btn input").val(i);
+    element.find("label.btn").append(roomType.name);
+    element.find("a").attr("href", roomType.infolink);
+    element.find("#roomtypeprice").attr("id", "roomtype" + i + "price");
+
+    for (var j = 1; j <= 3; j++) {
+      element.find("#price_" + j).val(roomType["price" + j] + ",00 €");
+      element.find("#price_" + j).attr("name", "price" + i + "_" + j);
+      element.find("#price_" + j).attr("id", "price" + i + "_" + j);
+    }
+
+    $("#roomtype_template").before(element);
+  });
+}
+
+function loadConfig(cb) {
+  $.ajax("config.json", {
+    success: function(data) {
+      setupRoomTypes(data.roomtypes);
+
+      cb();
+    }
+  });
+}
+
 $(document).ready(function() {
   disableClickOnNavbarLinks();
 
@@ -252,22 +288,24 @@ $(document).ready(function() {
     unhideInfoWell();
   }
   if (isFormPage()) {
-    preventSubmitUntilConfirmed();
+    loadConfig(function() {
+      preventSubmitUntilConfirmed();
 
-    switchActiveOnRoomsize();
-    setInitialRoomsize();
+      switchActiveOnRoomsize();
+      setInitialRoomsize();
 
-    initializeDatepicker();
+      initializeDatepicker();
 
-    switchActiveOnRoomtype();
-    setInitialRoomtype();
+      switchActiveOnRoomtype();
+      setInitialRoomtype();
 
-    updatePrices();
+      updatePrices();
 
-    switchSubmitOnConfirm();
-    switchSubmitOnChangedDates();
-    switchSubmitOnCommentChange();
+      switchSubmitOnConfirm();
+      switchSubmitOnChangedDates();
+      switchSubmitOnCommentChange();
 
-    potentialChangeInSubmitState();
+      potentialChangeInSubmitState();
+    });
   }
 });

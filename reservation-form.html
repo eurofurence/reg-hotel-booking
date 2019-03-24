@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Hotel Booking</title>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta HTTP-EQUIV="expires" CONTENT="0" />
+    <link
+      rel="stylesheet"
+      href="css/bootstrap-bootswatch-theme-lumen.min.css"
+    />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/bootstrap-datepicker3.min.css" />
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-datepicker.min.js"></script>
+    <script src="locales/bootstrap-datepicker.en-GB.min.js"></script>
+    <script src="js/app.js"></script>
+    <style type="text/css">
+      body {
+        padding-bottom: 70px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <span class="navbar-brand"
+              >Don&#39;t forget to send the email when you&#39;re done!</span
+            >
+          </div>
+          <p class="navbar-text">&nbsp;&nbsp;&nbsp;</p>
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">Pick your language</a></li>
+            <li class="active noclick"><a href="#">Enter information</a></li>
+            <li class="disabled noclick"><a href="#">Generate mail</a></li>
+          </ul>
+          <span id="languagecode" class="en">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <img src="images/lang/flag_en.gif" alt="English"/>
+                  <span class="caret" style="opacity: 0.0"></span
+                ></a>
+              </li>
+            </ul>
+          </span>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <form id="form" class="form-horizontal">
+          <div class="form-group" id="formpage">
+            <input
+              type="hidden"
+              id="size_initial"
+              name="roomsizeinitial"
+              value="1"
+            />
+            <p class="control-label col-xs-2">Room Size</p>
+            <div class="col-xs-1"></div>
+            <label id="size_single_label" class="btn btn-primary col-xs-3">
+              <input type="radio" id="size_single" name="roomsize" value="1" />
+              &nbsp; single room
+            </label>
+            <label id="size_double_label" class="btn btn-primary col-xs-3">
+              <input type="radio" id="size_double" name="roomsize" value="2" />
+              &nbsp; double room
+            </label>
+            <label id="size_triple_label" class="btn btn-primary col-xs-3">
+              <input type="radio" id="size_triple" name="roomsize" value="3" />
+              &nbsp; triple room
+            </label>
+          </div>
+          <div class="">
+            <p class="col-xs-3"></p>
+            <p class="col-xs-3"><b>1st Person</b></p>
+            <p class="col-xs-3"><b>2nd Person</b></p>
+            <p class="col-xs-3"><b>3rd Person</b></p>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-2" for="name2">Name</label>
+            <div class="col-xs-1"></div>
+            <div class="col-xs-3 firstpersoncolumn">
+              <input
+                title="First and last name 1st Person"
+                class="form-control firstperson"
+                id="name1"
+                name="name1"
+                type="text"
+                placeholder="First and last name 1st Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 secondpersoncolumn">
+              <input
+                title="First and last name 2nd Person"
+                class="form-control secondperson"
+                id="name2"
+                name="name2"
+                type="text"
+                placeholder="First and last name 2nd Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 thirdpersoncolumn">
+              <input
+                title="First and last name 3rd Person"
+                class="form-control thirdperson"
+                id="name3"
+                name="name3"
+                type="text"
+                placeholder="First and last name 3rd Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-2" for="street2"
+              >Street Address</label
+            >
+            <div class="col-xs-1"></div>
+            <div class="col-xs-3 firstpersoncolumn">
+              <input
+                title="Street 1st Person"
+                class="form-control firstperson"
+                id="street1"
+                name="street1"
+                type="text"
+                placeholder="Street 1st Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 secondpersoncolumn">
+              <input
+                title="Street 2nd Person"
+                class="form-control secondperson"
+                id="street2"
+                name="street2"
+                type="text"
+                placeholder="Street 2nd Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 thirdpersoncolumn">
+              <input
+                title="Street 3rd Person"
+                class="form-control thirdperson"
+                id="street3"
+                name="street3"
+                type="text"
+                placeholder="Street 3rd Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-2" for="city2"
+              >City and ZIP</label
+            >
+            <div class="col-xs-1"></div>
+            <div class="col-xs-3 firstpersoncolumn">
+              <input
+                title="City 1st Person"
+                class="form-control firstperson"
+                id="city1"
+                name="city1"
+                type="text"
+                placeholder="City 1st Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 secondpersoncolumn">
+              <input
+                title="City 2nd Person"
+                class="form-control secondperson"
+                id="city2"
+                name="city2"
+                type="text"
+                placeholder="City 2nd Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 thirdpersoncolumn">
+              <input
+                title="City 3rd Person"
+                class="form-control thirdperson"
+                id="city3"
+                name="city3"
+                type="text"
+                placeholder="City 3rd Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-2" for="country2">Country</label>
+            <div class="col-xs-1"></div>
+            <div class="col-xs-3 firstpersoncolumn">
+              <input
+                title="Country 1st Person"
+                class="form-control firstperson"
+                id="country1"
+                name="country1"
+                type="text"
+                placeholder="Country 1st Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 secondpersoncolumn">
+              <input
+                title="Country 2nd Person"
+                class="form-control secondperson"
+                id="country2"
+                name="country2"
+                type="text"
+                placeholder="Country 2nd Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 thirdpersoncolumn">
+              <input
+                title="Country 3rd Person"
+                class="form-control thirdperson"
+                id="country3"
+                name="country3"
+                type="text"
+                placeholder="Country 3rd Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-2" for="email2"
+              >Email Address</label
+            >
+            <div class="col-xs-1"></div>
+            <div class="col-xs-3 firstpersoncolumn">
+              <input
+                title="person1@mail"
+                class="form-control firstperson"
+                id="email1"
+                name="email1"
+                type="email"
+                placeholder="person1@mail"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 secondpersoncolumn">
+              <input
+                title="person2@mail"
+                class="form-control secondperson"
+                id="email2"
+                name="email2"
+                type="email"
+                placeholder="person2@mail"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 thirdpersoncolumn">
+              <input
+                title="person3@mail"
+                class="form-control thirdperson"
+                id="email3"
+                name="email3"
+                type="email"
+                placeholder="person3@mail"
+                value=""
+                maxlength="255"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-2" for="phone1"
+              >Phone Number</label
+            >
+            <div class="col-xs-1"></div>
+            <div class="col-xs-3 firstpersoncolumn">
+              <input
+                title="1st Phone Number"
+                class="form-control firstperson"
+                id="phone1"
+                name="phone1"
+                type="text"
+                placeholder="1st Phone Number"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 secondpersoncolumn">
+              <input
+                title="2nd Phone Number"
+                class="form-control secondperson"
+                id="phone2"
+                name="phone2"
+                type="text"
+                placeholder="2nd Phone Number"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 thirdpersoncolumn">
+              <input
+                title="3rd Phone Number"
+                class="form-control thirdperson"
+                id="phone3"
+                name="phone3"
+                type="text"
+                placeholder="3rd Phone Number"
+                value=""
+                maxlength="255"
+              />
+            </div>
+          </div>
+          <div class="">
+            <p class="col-xs-12"></p>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-2" for="arrival"
+              >Arrival and Departure Date</label
+            >
+            <div class="col-xs-2"></div>
+            <div class="col-xs-4 input-group">
+              <input
+                type="hidden"
+                id="dateformat"
+                name="dateformat"
+                value="mm/dd/yyyy"
+              />
+              <input
+                type="hidden"
+                id="date1s"
+                name="date1s"
+                value="08/11/2019"
+              />
+              <input
+                type="hidden"
+                id="date1e"
+                name="date1e"
+                value="08/19/2019"
+              />
+              <input
+                type="hidden"
+                id="date2s"
+                name="date2s"
+                value="08/11/2019"
+              />
+              <input
+                type="hidden"
+                id="date2e"
+                name="date2e"
+                value="08/19/2019"
+              />
+              <span class="has-error" id="arrival_error">
+                <input
+                  title="Arrival Date"
+                  class="form-control"
+                  id="arrival"
+                  name="arrival"
+                  type="text"
+                  placeholder="Arrival Date"
+                  value="08/14/2019"
+                  maxlength="10"
+                />
+              </span>
+              <span class="input-group-addon">-</span>
+              <span class="has-error" id="departure_error">
+                <input
+                  title="Departure Date"
+                  class="form-control"
+                  id="departure"
+                  name="departure"
+                  type="text"
+                  placeholder="Departure Date"
+                  value="08/18/2019"
+                  maxlength="10"
+                />
+              </span>
+            </div>
+            <div class="col-xs-4"></div>
+          </div>
+          <div class="">
+            <p class="col-xs-12"></p>
+          </div>
+          <div class="form-group">
+            <input
+              type="hidden"
+              id="roomtype_max"
+              name="roomtype_max"
+              value="3"
+            />
+            <input
+              type="hidden"
+              id="roomtype_initial"
+              name="roomtype_initial"
+              value="1"
+            />
+            <div class="row roomtype template" id="roomtype_template">
+              <label class="control-label col-xs-2">Room Type</label>
+
+              <div class="col-xs-1"></div>
+              <label
+                id="roomtypebutton"
+                class="btn btn-primary col-xs-3"
+                style="text-align: left"
+              >
+                <input type="radio" id="roomtype" name="roomtype" value="" />
+              </label>
+              <p class="control-label col-xs-3" style="text-align: left">
+                <a target="_blank" href="">show description</a>
+              </p>
+              <p class="control-label col-xs-1" id="roomtypeprice">unknown*</p>
+              <p class="control-label col-xs-2">per night / per room</p>
+              <input type="hidden" id="price_1" name="price_1" />
+              <input type="hidden" id="price_2" name="price_2" />
+              <input type="hidden" id="price_3" name="price_3" />
+            </div>
+            <div class="row">
+              <div class="col-xs-3"></div>
+              <p class="col-xs-9">
+                *includes breakfast, sales tax, city tax. If your chosen
+                category is no longer available, the hotel may reserve a higher
+                category for you. If you do not want this, please state that in
+                the comments field below, or simply return the room to the hotel
+                when it has been reserved. No responsibility is accepted for the
+                accuracy of any information shown here! All reservations subject
+                to availability!
+              </p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-2" for="comments"
+              >Comments</label
+            >
+            <div class="col-xs-1"></div>
+            <div class="col-xs-9" id="comments_error">
+              <textarea
+                class="form-control"
+                rows="4"
+                id="comments"
+                name="comments"
+              ></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-2" for="understood"
+              >Disclaimer</label
+            >
+            <div class="col-xs-1"></div>
+            <div class="checkbox col-xs-9 has-error" id="understood_error">
+              <label
+                ><input
+                  type="checkbox"
+                  id="understood"
+                  name="understood"
+                  value="yes"
+                />I understand that clicking &#39;generate email&#39; will NOT
+                guarantee me a room. I will have to manually send the generated
+                email, and wait for a reply from the hotel!</label
+              >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-3"></div>
+            <div class="col-xs-9">
+              <input
+                type="hidden"
+                name="_csrf"
+                value="545f2f68-743f-4369-b03d-a5cdbdda8e78"
+              />
+              <input
+                type="hidden"
+                id="cannot_submit"
+                name="ignore"
+                value="You cannot generate the email yet. Please make sure you fill in all required fields correctly and accept the disclaimer, then try again. Comments are limited to 2000 characters. Invalid fields are marked in red."
+              />
+              <button type="submit" id="submitbutton" class="btn btn-default">
+                generate email
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <span class="navbar-brand">©2019 Eurofurence e.V.</span>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>

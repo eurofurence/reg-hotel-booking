@@ -1,0 +1,27 @@
+{
+  "roomtypes": [
+    {
+      "name": "Concert Hall",
+      "infolink": "http://localhost/concerthall",
+      "price1": 84,
+      "price2": 99,
+      "price3": 104
+    },
+    {
+      "name": "Stadium",
+      "infolink": "http://localhost/stadium",
+      "price1": 85,
+      "price2": 100,
+      "price3": 105
+    },
+    {
+      "name": "Shack in the Wilderness",
+      "infolink": "http://localhost/shack",
+      "price1": 14,
+      "price2": 15,
+      "price3": 19
+    }
+  ],
+  "recipient": "demo@mailinator.com",
+  "stichwort": "Demo Convention"
+}
