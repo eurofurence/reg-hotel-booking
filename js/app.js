@@ -195,12 +195,24 @@ function canSubmit() {
   return datesOk && disclaimerOk && commentsOk;
 }
 
+function storeFormValues() {
+  var elements = document.getElementById("form").elements;
+  var data = {};
+  for (var i = 0; i < elements.length; i++) {
+    data[elements[i].id] = elements[i].value;
+  }
+  data.roomsize = elements.roomsize.value;
+  data.roomtype = elements.roomtype.value;
+  localStorage.setItem("hotelFormData", JSON.stringify(data));
+}
+
 function preventSubmitUntilConfirmed() {
   $("#form").submit(function(e) {
     if (!canSubmit()) {
       var message = $("#cannot_submit").val();
       if (message) alert(message);
     } else {
+      storeFormValues();
       location.href = "reservation-show.html";
     }
     return false;
@@ -276,7 +288,7 @@ function loadConfig(cb) {
     success: function(data) {
       setupRoomTypes(data.roomtypes);
 
-      cb();
+      cb(data);
     }
   });
 }

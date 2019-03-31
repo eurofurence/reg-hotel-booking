@@ -22,6 +22,16 @@
       "price3": 19
     }
   ],
-  "recipient": "demo@mailinator.com",
-  "stichwort": "Demo Convention"
+  "mail": {
+    "recipient": "demo@mailinator.com",
+    "subject": "Room Inquiry {{keyword}} - {{secret}}",
+    "template": "mail.txt"
+  },
+  "keywords": {
+    "secret": {
+      "location": "http://localhost/secret.txt",
+      "time": "2019-03-31T10:54:12+00:00"
+    },
+    "keyword": "Demo Convention"
+  }
 }
