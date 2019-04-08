@@ -29,8 +29,8 @@
   },
   "keywords": {
     "secret": {
-      "location": "http://localhost/secret.txt",
-      "time": "2019-03-31T10:54:12+00:00"
+      "location": "secret.txt",
+      "time": "2019-04-08T20:55:20+02:00"
     },
     "keyword": "Demo Convention"
   }

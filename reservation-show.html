@@ -16,6 +16,7 @@
     <script src="js/bootstrap-datepicker.min.js"></script>
     <script src="locales/bootstrap-datepicker.en-GB.min.js"></script>
     <script src="js/mustache.min.js"></script>
+    <script src="js/date_fns.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/mail.js"></script>
     <style type="text/css">
@@ -72,7 +73,11 @@
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <p><br /></p>
+          <div class="alert alert-warning" role="alert">
+            The secret code is not revealed yet.
+            <b>Do not send the email yet!</b> The code will be revealed in
+            <span id="secret-timer"></span>.
+          </div>
         </div>
       </div>
       <div class="row">
