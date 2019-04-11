@@ -213,7 +213,11 @@ function preventSubmitUntilConfirmed() {
       if (message) alert(message);
     } else {
       storeFormValues();
-      location.href = "reservation-show.html";
+      if (location.href.indexOf("reservation-form_de.html") !== -1) {
+        location.href = "reservation-show_de.html";
+      } else {
+        location.href = "reservation-show.html";
+      }
     }
     return false;
   });

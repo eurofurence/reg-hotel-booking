@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Hotelbuchung</title>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta HTTP-EQUIV="expires" CONTENT="0" />
+    <link
+      rel="stylesheet"
+      href="css/bootstrap-bootswatch-theme-lumen.min.css"
+    />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/bootstrap-datepicker3.min.css" />
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-datepicker.min.js"></script>
+    <script src="locales/bootstrap-datepicker.en-GB.min.js"></script>
+    <script src="js/app.js"></script>
+    <style type="text/css">
+      body {
+        padding-bottom: 70px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <span class="navbar-brand"
+              >Denke daran, die Email auch abzuschicken!</span
+            >
+          </div>
+          <p class="navbar-text">&nbsp;&nbsp;&nbsp;</p>
+          <ul class="nav navbar-nav">
+            <li><a href="index_de.html">Sprache wählen</a></li>
+            <li class="active noclick"><a href="#">Daten eingeben</a></li>
+            <li class="disabled noclick"><a href="#">Mailtext generieren</a></li>
+          </ul>
+          <span id="languagecode" class="de">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <img src="images/lang/flag_de.gif" alt="Deutsch"/>
+                  <span class="caret" style="opacity: 0.0"></span></a></a>
+              </li>
+            </ul>
+          </span>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <form id="form" class="form-horizontal">
+          <div class="form-group" id="formpage">
+            <input
+              type="hidden"
+              id="size_initial"
+              name="roomsizeinitial"
+              value="1"
+            />
+            <p class="control-label col-xs-2">Anzahl Personen</p>
+            <div class="col-xs-1"></div>
+            <label id="size_single_label" class="btn btn-primary col-xs-3">
+              <input type="radio" id="size_single" name="roomsize" value="1" />
+              &nbsp; Einzelzimmer
+            </label>
+            <label id="size_double_label" class="btn btn-primary col-xs-3">
+              <input type="radio" id="size_double" name="roomsize" value="2" />
+              &nbsp; Doppelzimmer
+            </label>
+            <label id="size_triple_label" class="btn btn-primary col-xs-3">
+              <input type="radio" id="size_triple" name="roomsize" value="3" />
+              &nbsp; Drei-Personen-Zimmer
+            </label>
+          </div>
+          <div class="">
+            <p class="col-xs-3"></p>
+            <p class="col-xs-3"><b>1. Person</b></p>
+            <p class="col-xs-3"><b>2. Person</b></p>
+            <p class="col-xs-3"><b>3. Person</b></p>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-2" for="name2">Vor- u. Nachname</label>
+            <div class="col-xs-1"></div>
+            <div class="col-xs-3 firstpersoncolumn">
+              <input
+                title="Name 1. Person"
+                class="form-control firstperson"
+                id="name1"
+                name="name1"
+                type="text"
+                placeholder="Name 1. Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 secondpersoncolumn">
+              <input
+                title="Name 2. Person"
+                class="form-control secondperson"
+                id="name2"
+                name="name2"
+                type="text"
+                placeholder="Name 2. Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 thirdpersoncolumn">
+              <input
+                title="Name 3. Person"
+                class="form-control thirdperson"
+                id="name3"
+                name="name3"
+                type="text"
+                placeholder="Name 3. Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-2" for="street2"
+              >Straße u. Hausnummer</label
+            >
+            <div class="col-xs-1"></div>
+            <div class="col-xs-3 firstpersoncolumn">
+              <input
+                title="Anschrift 1. Person"
+                class="form-control firstperson"
+                id="street1"
+                name="street1"
+                type="text"
+                placeholder="Anschrift 1. Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 secondpersoncolumn">
+              <input
+                title="Anschrift 2. Person"
+                class="form-control secondperson"
+                id="street2"
+                name="street2"
+                type="text"
+                placeholder="Anschrift 2. Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 thirdpersoncolumn">
+              <input
+                title="Anschrift 3. Person"
+                class="form-control thirdperson"
+                id="street3"
+                name="street3"
+                type="text"
+                placeholder="Anschrift 3. Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-2" for="city2"
+              >PLZ u. Ort</label
+            >
+            <div class="col-xs-1"></div>
+            <div class="col-xs-3 firstpersoncolumn">
+              <input
+                title="PLZ u. Ort 1. Person"
+                class="form-control firstperson"
+                id="city1"
+                name="city1"
+                type="text"
+                placeholder="PLZ u. Ort 1. Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 secondpersoncolumn">
+              <input
+                title="PLZ u. Ort 2. Person"
+                class="form-control secondperson"
+                id="city2"
+                name="city2"
+                type="text"
+                placeholder="PLZ u. Ort 2. Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 thirdpersoncolumn">
+              <input
+                title="PLZ u. Ort 3. Person"
+                class="form-control thirdperson"
+                id="city3"
+                name="city3"
+                type="text"
+                placeholder="PLZ u. Ort 3. Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-2" for="country2">Land</label>
+            <div class="col-xs-1"></div>
+            <div class="col-xs-3 firstpersoncolumn">
+              <input
+                title="Land 1. Person"
+                class="form-control firstperson"
+                id="country1"
+                name="country1"
+                type="text"
+                placeholder="Land 1. Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 secondpersoncolumn">
+              <input
+                title="Land 2. Person"
+                class="form-control secondperson"
+                id="country2"
+                name="country2"
+                type="text"
+                placeholder="Land 2. Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 thirdpersoncolumn">
+              <input
+                title="Land 3. Person"
+                class="form-control thirdperson"
+                id="country3"
+                name="country3"
+                type="text"
+                placeholder="Land 3. Person"
+                value=""
+                maxlength="255"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-2" for="email2"
+              >Emailadresse</label
+            >
+            <div class="col-xs-1"></div>
+            <div class="col-xs-3 firstpersoncolumn">
+              <input
+                title="person1@mail"
+                class="form-control firstperson"
+                id="email1"
+                name="email1"
+                type="email"
+                placeholder="person1@mail"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 secondpersoncolumn">
+              <input
+                title="person2@mail"
+                class="form-control secondperson"
+                id="email2"
+                name="email2"
+                type="email"
+                placeholder="person2@mail"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 thirdpersoncolumn">
+              <input
+                title="person3@mail"
+                class="form-control thirdperson"
+                id="email3"
+                name="email3"
+                type="email"
+                placeholder="person3@mail"
+                value=""
+                maxlength="255"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-2" for="phone1"
+              >Telefonnummer</label
+            >
+            <div class="col-xs-1"></div>
+            <div class="col-xs-3 firstpersoncolumn">
+              <input
+                title="1. Telefonnummer"
+                class="form-control firstperson"
+                id="phone1"
+                name="phone1"
+                type="text"
+                placeholder="1. Telefonnummer"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 secondpersoncolumn">
+              <input
+                title="2. Telefonnummer"
+                class="form-control secondperson"
+                id="phone2"
+                name="phone2"
+                type="text"
+                placeholder="2. Telefonnummer"
+                value=""
+                maxlength="255"
+              />
+            </div>
+            <div class="col-xs-3 thirdpersoncolumn">
+              <input
+                title="3. Telefonnummer"
+                class="form-control thirdperson"
+                id="phone3"
+                name="phone3"
+                type="text"
+                placeholder="3. Telefonnummer"
+                value=""
+                maxlength="255"
+              />
+            </div>
+          </div>
+          <div class="">
+            <p class="col-xs-12"></p>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-2" for="arrival"
+            >An- und Abreisedatum</label
+            >
+            <div class="col-xs-2"></div>
+            <div class="col-xs-4 input-group">
+              <input
+                type="hidden"
+                id="dateformat"
+                name="dateformat"
+                value="mm/dd/yyyy"
+              />
+              <input
+                type="hidden"
+                id="date1s"
+                name="date1s"
+                value="08/11/2019"
+              />
+              <input
+                type="hidden"
+                id="date1e"
+                name="date1e"
+                value="08/19/2019"
+              />
+              <input
+                type="hidden"
+                id="date2s"
+                name="date2s"
+                value="08/11/2019"
+              />
+              <input
+                type="hidden"
+                id="date2e"
+                name="date2e"
+                value="08/19/2019"
+              />
+              <span class="has-error" id="arrival_error">
+                <input
+                  title="Anreisedatum"
+                  class="form-control"
+                  id="arrival"
+                  name="arrival"
+                  type="text"
+                  placeholder="Anreisedatum"
+                  value="08/14/2019"
+                  maxlength="10"
+                />
+              </span>
+              <span class="input-group-addon">-</span>
+              <span class="has-error" id="departure_error">
+                <input
+                  title="Abreisedatum"
+                  class="form-control"
+                  id="departure"
+                  name="departure"
+                  type="text"
+                  placeholder="Abreisedatum"
+                  value="08/18/2019"
+                  maxlength="10"
+                />
+              </span>
+            </div>
+            <div class="col-xs-4"></div>
+          </div>
+          <div class="">
+            <p class="col-xs-12"></p>
+          </div>
+          <div class="form-group">
+            <input
+              type="hidden"
+              id="roomtype_max"
+              name="roomtype_max"
+              value="3"
+            />
+            <input
+              type="hidden"
+              id="roomtype_initial"
+              name="roomtype_initial"
+              value="1"
+            />
+            <div class="row roomtype template" id="roomtype_template">
+              <label class="control-label col-xs-2">Zimmertyp</label>
+
+              <div class="col-xs-1"></div>
+              <label
+                id="roomtypebutton"
+                class="btn btn-primary col-xs-3"
+                style="text-align: left"
+              >
+                <input type="radio" id="roomtype" name="roomtype" value="" />
+              </label>
+              <p class="control-label col-xs-3" style="text-align: left">
+                <a target="_blank" href="">Beschreibung anzeigen</a>
+              </p>
+              <p class="control-label col-xs-1" id="roomtypeprice">unknown*</p>
+              <p class="control-label col-xs-2">pro Nacht / pro Zimmer</p>
+              <input type="hidden" id="price_1" name="price_1" />
+              <input type="hidden" id="price_2" name="price_2" />
+              <input type="hidden" id="price_3" name="price_3" />
+            </div>
+            <div class="row">
+              <div class="col-xs-3"></div>
+              <p class="col-xs-9">
+                *Einschließlich Frühstück, MWSt, Berliner Bettensteuer. Wenn Deine gewählte Kategorie ausgebucht ist, kann es passieren, dass das Hotel eine höhere Kategorie für Dich reserviert. Wenn Du das nicht möchtest, dies bitte einfach im Kommentarfeld vermerken, oder bei Erhalt der Reservierungsbestätigung das Zimmer ans Hotel zurückgeben. Alle Angaben ohne Gewähr! Dieses Formular führt keine Verfügbarkeitsprüfung durch!
+              </p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-2" for="comments"
+              >Kommentare</label
+            >
+            <div class="col-xs-1"></div>
+            <div class="col-xs-9" id="comments_error">
+              <textarea
+                class="form-control"
+                rows="4"
+                id="comments"
+                name="comments"
+              ></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-2" for="understood"
+              >Bestätigung</label
+            >
+            <div class="col-xs-1"></div>
+            <div class="checkbox col-xs-9 has-error" id="understood_error">
+              <label
+                ><input
+                  type="checkbox"
+                  id="understood"
+                  name="understood"
+                  value="yes"
+                />Mir ist bewusst, dass ein Klick auf &#39;Email generieren&#39; noch keine Zimmerreservierung durchführt. Ich muss den erzeugten Text selbst per Email ans Hotel schicken. Erst die Antwort vom Hotel wird mir sagen, ob ich ein Zimmer reservieren konnte.</label
+              >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-3"></div>
+            <div class="col-xs-9">
+              <input
+                type="hidden"
+                id="cannot_submit"
+                name="ignore"
+                value="Du kannst die Email noch nicht generieren. Bitte fülle alle Pflichtfelder korrekt aus und setze den Haken bei &#39;Bestätigung&#39;, danach sollte es gehen. Dein Kommentar darf maximal 2000 Zeichen lang sein. Felder mit Validierungsfehlern sind rot markiert."
+              />
+              <button type="submit" id="submitbutton" class="btn btn-default">
+                Email generieren
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <span class="navbar-brand">©2019 Eurofurence e.V.</span>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>
