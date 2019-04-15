@@ -1,0 +1,37 @@
+{
+  "roomtypes": [
+    {
+      "name": "Konzerthalle",
+      "infolink": "http://localhost/concerthall",
+      "price1": 84,
+      "price2": 99,
+      "price3": 104
+    },
+    {
+      "name": "Stadion",
+      "infolink": "http://localhost/stadium",
+      "price1": 85,
+      "price2": 100,
+      "price3": 105
+    },
+    {
+      "name": "Hütte in der Wildnis",
+      "infolink": "http://localhost/shack",
+      "price1": 14,
+      "price2": 15,
+      "price3": 19
+    }
+  ],
+  "mail": {
+    "recipient": "demo@mailinator.com",
+    "subject": "Zimmeranfrage {{keyword}} - {{secret}}",
+    "template": "mail.txt"
+  },
+  "keywords": {
+    "secret": {
+      "location": "/secret.txt",
+      "time": "2019-04-08T20:55:20+02:00"
+    },
+    "keyword": "Demo Convention"
+  }
+}

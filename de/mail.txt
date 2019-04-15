@@ -1,0 +1,50 @@
+Sehr geehrte Damen und Herren,
+
+I möchte die folgende Reservierung vornehmen:
+
+Keyword:     {{keyword}}
+Codewort:    {{secret}}
+
+Zimmertyp:   {{roomtype}}
+Personen:    {{roomsize}} Person(en)
+
+Anreise:     {{arrival}}
+Abreise:     {{departure}}
+
+1. Person und Hauptkontakt:
+             {{name1}}
+             {{street1}}
+             {{city1}}
+             {{country1}}
+             {{email1}}
+             {{phone1}}
+{{#name2}}
+
+2. Person:
+             {{name2}}
+             {{street2}}
+             {{city2}}
+             {{country2}}
+             {{email2}}
+             {{phone2}}
+{{/name2}}
+{{#name3}}
+
+3. Person:
+             {{name3}}
+             {{street3}}
+             {{city3}}
+             {{country3}}
+             {{email3}}
+             {{phone3}}
+{{/name3}}
+{{#comments}}
+
+Zusätzliche Kommentare:
+{{comments}}
+{{/comments}}
+
+Vielen Dank!
+
+Mit freundlichen Grüßen,
+{{name1}}

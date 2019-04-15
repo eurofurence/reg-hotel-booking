@@ -206,18 +206,33 @@ function storeFormValues() {
   localStorage.setItem("hotelFormData", JSON.stringify(data));
 }
 
+function restoreFormValues() {
+  const values = JSON.parse(
+    window.localStorage.getItem("hotelFormData") || "{}"
+  );
+  var elements = document.getElementById("form").elements;
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].value = values[elements[i].id];
+  }
+  elements.roomsize.value = values.roomsize;
+  elements.roomtype.value = values.roomtype;
+  changedRoomsize(values.roomsize);
+  changedRoomtype(values.roomtype);
+}
+
+function setupFormValueStoring() {
+  $("#form").on("input", storeFormValues);
+  $("#arrival").change(storeFormValues);
+  $("#departure").change(storeFormValues);
+}
+
 function preventSubmitUntilConfirmed() {
   $("#form").submit(function(e) {
     if (!canSubmit()) {
       var message = $("#cannot_submit").val();
       if (message) alert(message);
     } else {
-      storeFormValues();
-      if (location.href.indexOf("reservation-form_de.html") !== -1) {
-        location.href = "reservation-show_de.html";
-      } else {
-        location.href = "reservation-show.html";
-      }
+      location.href = "reservation-show.html";
     }
     return false;
   });
@@ -322,6 +337,10 @@ $(document).ready(function() {
       switchSubmitOnCommentChange();
 
       potentialChangeInSubmitState();
+
+      restoreFormValues();
+
+      setupFormValueStoring();
     });
   }
 });
