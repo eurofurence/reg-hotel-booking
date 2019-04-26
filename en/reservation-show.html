@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
   <head>
     <title>Hotel Booking</title>
 
@@ -23,72 +23,82 @@
         padding-bottom: 70px;
       }
     </style>
-    <script>
-      window.language = "en-GB";
-    </script>
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container">
       <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
             <span class="navbar-brand"
-              >Don&#39;t forget to send the email when you&#39;re done!</span
+              >Eurofurence Hotelbooking Mailgenerator</span
             >
           </div>
           <p class="navbar-text">&nbsp;&nbsp;&nbsp;</p>
-          <ul class="nav navbar-nav">
-            <li><a href="index.html">Pick your language</a></li>
-            <li class="disabled noclick"><a href="#">Enter information</a></li>
-            <li class="active noclick"><a href="#">Generate mail</a></li>
-          </ul>
           <span id="languagecode" class="en">
-            <ul class="nav navbar-nav navbar-right">
-              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                  <img src="/images/lang/flag_en.gif" alt="English"/>
-                  <span class="caret" style="opacity: 0.0"></span
-                ></a>
-              </li>
-            </ul>
-          </span>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <img src="/images/lang/flag_en.gif"/>
+                    <span class="caret"></span
+                  ></a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="/en/reservation-show.html"
+                        ><img src="/images/lang/flag_en.gif" /><span
+                          style="padding-left:10px"
+                          >English</span
+                        ></a
+                      >
+                    </li>
+                    <li>
+                      <a href="/de/reservation-show.html"
+                        ><img src="/images/lang/flag_de.gif" /><span
+                          style="padding-left:10px"
+                          >German</span
+                        ></a
+                      >
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </span>
         </div>
       </nav>
 
-      <div class="row">
-        <div class="col-xs-12" id="showpage">
-          <p>
-            Now you need to send the following email:
-            <a href="">click here to open the mail in your email program</a>!
-            (does not work with some browsers and email programs)
-          </p>
+      <div
+        class="row"
+        id="ready-text"
+        style="display: none; margin-bottom: 2em;"
+      >
+        <div class="col-xs-12">
+          You are now ready to send your room reservation email. You can either
+          click <a href="">this link</a> to open the mail in your email program
+          if you configured it correctly. You can also copy and paste this text
+          into your email client:
         </div>
       </div>
-      <div class="row">
+
+      <div class="row" id="countdown-text" style="margin-bottom: 3em;">
         <div class="col-xs-12">
           <p>
-            <b>You can only make one reservation using your secret code!</b>
+            This is the preview of the email you have to send. The black boxes
+            (■■■■■■■) represent the locations where the secret has to be
+            inserted. However, the secret is not revealed yet.
           </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="alert alert-warning" role="alert">
-            The secret code is not revealed yet.
-            <b>Do not send the email yet!</b> The code will be revealed
-            <span id="secret-timer"></span>.
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
+          <p><b>Do not send the email yet!</b></p>
           <p>
-            If your email program is correctly configured in your browser the
-            link above should work, but you can simply copy and paste this into
-            your email client instead:
+            Once the secret is revealed, it is automatically loaded and added in
+            the correct locations. You do not need to reload the page for that.
+            You can also find all the information you need, including the secret
+            code (once revealed), on the
+            <a href="https://twitter.com/eurofurence"
+              >Eurofurence Twitter account</a
+            >.
           </p>
+          <p style="text-align: center; margin-top: 2em;">The secret code will be revealed<br /><h2 style="text-align: center;" id="secret-timer"></h2></p>
         </div>
       </div>
+
       <div class="form-group">
         <label class="control-label col-xs-2" for="email_to">To:</label>
         <div class="col-xs-10">

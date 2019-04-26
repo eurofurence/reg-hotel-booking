@@ -1,3 +1,5 @@
+var language = $("html").attr("lang");
+
 $(document).ready(function() {
   loadConfig(function(config) {
     loadTemplate(config.mail.template, function(template) {
@@ -19,7 +21,7 @@ function render(config, template) {
   $("#email").text(body);
   $("#email_to").val(config.mail.recipient);
   $("#email_subject").val(subject);
-  $("#showpage a").attr(
+  $("#ready-text a").attr(
     "href",
     "mailto:" +
       config.mail.recipient +
@@ -45,27 +47,25 @@ function setupSecretLoader(config, template, key) {
   function secretLoader() {
     var now = Date.now();
     if (date.valueOf() <= now) {
-      $(".alert-warning").text("Loading Secret...");
+      $("#secret-timer").text(getText("loading"));
       $.ajax(value.location, {
         success: function(data) {
           config.keywords[key] = data;
           render(config, template);
-          $(".alert-warning").remove();
+          $("#countdown-text").remove();
+          $("#ready-text").css("display", "block");
         },
         error: function(xhr, status, error) {
-          $(".alert-warning").text(
-            "Loading failed! Please reload the page to try again! (Error: " +
-              error +
-              ")"
-          );
+          $("#secret-timer").css("color", "red");
+          $("#secret-timer").text(getText("error") + error + ")");
         }
       });
     } else {
       var useRelative = date - now < 3600000;
 
-      var prefix = getPrefix(window.language, useRelative);
+      var prefix = getPrefix(language, useRelative);
 
-      var timeString = date.toLocaleDateString(window.language, {
+      var timeString = date.toLocaleDateString(language, {
         weekday: "long",
         year: "numeric",
         month: "long",
@@ -133,5 +133,22 @@ function getPrefix(language, relative) {
     return "am";
   } else {
     return "on";
+  }
+}
+
+function getText(type) {
+  if (type === "loading") {
+    if (language === "de-DE") {
+      return "Laden...";
+    } else {
+      return "Loading Secret...";
+    }
+  }
+  if (type === "error") {
+    if (language === "de-DE") {
+      return "Laden fehlgeschlagen! Bitte lade die Seite neu! (Fehler: ";
+    } else {
+      return "Loading failed! Please reload the page to try again! (Error: ";
+    }
   }
 }

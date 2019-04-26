@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
   <head>
     <title>Hotel Booking</title>
 
@@ -11,11 +11,13 @@
       href="/css/bootstrap-bootswatch-theme-lumen.min.css"
     />
     <link rel="stylesheet" href="/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" href="/css/app.css" />
     <script src="/js/jquery-3.2.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/bootstrap-datepicker.min.js"></script>
     <script src="/locales/bootstrap-datepicker.en-GB.min.js"></script>
     <script src="/js/app.js"></script>
+    <script src="/js/timer.js"></script>
     <style type="text/css">
       body {
         padding-bottom: 70px;
@@ -23,22 +25,15 @@
     </style>
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container">
       <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
             <span class="navbar-brand"
-              >Don&#39;t forget to send the email when you&#39;re done!</span
+              >Eurofurence Hotelbooking Mailgenerator</span
             >
           </div>
           <p class="navbar-text">&nbsp;&nbsp;&nbsp;</p>
-          <ul class="nav navbar-nav">
-            <li class="active noclick">
-              <a href="index.html">Pick your language</a>
-            </li>
-            <li class="disabled noclick"><a href="#">Enter information</a></li>
-            <li class="disabled noclick"><a href="#">Generate mail</a></li>
-          </ul>
           <span id="languagecode" class="en">
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
@@ -79,18 +74,35 @@
       </div>
       <div style="visibility: hidden;" id="unhide_with_js">
         <div class="well well-sm">
-          <div class="row" style="margin-top: 10%; margin-bottom: 10%">
-            <div class="col-xs-9">
-              <h1>We can help you write it ...</h1>
-            </div>
-            <div class="col-xs-3"></div>
-          </div>
-          <div class="row" style="margin-top: 10%; margin-bottom: 10%">
-            <div class="col-xs-3"></div>
-            <div class="col-xs-9">
-              <h1>... but you&#39;ll have to send the email yourself!</h1>
-            </div>
-          </div>
+          <h4>Booking a Hotelroom for Eurofurence</h4>
+          <p>
+            Like in the last years, booking a room for Eurofurence is done by
+            sending an e-mail to the hotel. Due to the amount of booking
+            requests the hotel has to process, all e-mails have to be in the
+            same format.
+          </p>
+          <p>
+            This website helps you construct the e-mail in the format that is
+            accepted by the hotel. You can also find all the information you
+            need, including the secret code, on the
+            <a href="https://twitter.com/eurofurence"
+              >Eurofurence Twitter account</a
+            >.
+          </p>
+          <h4>The secret code</h4>
+          <p>
+            Your e-mail has to contain a secret code in order to be accepted.
+            This code is revealed at the same time for everyone in order to give
+            everyone the same chance to book a room.
+          </p>
+          <p>
+            You can already enter all the other information needed for the
+            e-mail before the code is revealed. That way the only thing you need
+            to do at the time it is revealed is to copy the text into your mail
+            program and hit send.
+            <b>Do not send the e-mail without the secret code!</b>
+          </p>
+          <p id="hide-after-reveal" style="text-align: center; margin-top: 2em;">The secret code will be revealed<br /><h2 style="text-align: center;" id="secret-timer"></h2></p>
         </div>
         <div class="row" style="margin-top: 5%">
           <div class="col-xs-4"></div>
@@ -99,7 +111,7 @@
               href="reservation-form.html"
               class="btn btn-primary active"
               role="button"
-              >Got it, let&#39;s get started!</a
+              >Let's go!</a
             >
           </div>
           <div class="col-xs-4"></div>

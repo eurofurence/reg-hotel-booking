@@ -210,9 +210,20 @@ function restoreFormValues() {
   const values = JSON.parse(
     window.localStorage.getItem("hotelFormData") || "{}"
   );
+
+  if (typeof values.roomsize === "undefined") {
+    values.roomsize = "1";
+  }
+
+  if (typeof values.roomtype === "undefined") {
+    values.roomtype = "1";
+  }
+
   var elements = document.getElementById("form").elements;
   for (var i = 0; i < elements.length; i++) {
-    elements[i].value = values[elements[i].id];
+    if (typeof values[elements[i].id] !== "undefined") {
+      elements[i].value = values[elements[i].id];
+    }
   }
   elements.roomsize.value = values.roomsize;
   elements.roomtype.value = values.roomtype;
