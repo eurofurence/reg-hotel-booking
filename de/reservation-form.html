@@ -24,29 +24,42 @@
     </style>
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container">
       <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
             <span class="navbar-brand"
-              >Denke daran, die Email auch abzuschicken!</span
+              >Eurofurence Hotelbuchungs Mailgenerator</span
             >
           </div>
           <p class="navbar-text">&nbsp;&nbsp;&nbsp;</p>
-          <ul class="nav navbar-nav">
-            <li><a href="index.html">Sprache wählen</a></li>
-            <li class="active noclick"><a href="#">Daten eingeben</a></li>
-            <li class="disabled noclick"><a href="#">Mailtext generieren</a></li>
-          </ul>
           <span id="languagecode" class="de">
-            <ul class="nav navbar-nav navbar-right">
-              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                  <img src="/images/lang/flag_de.gif" alt="Deutsch"/>
-                  <span class="caret" style="opacity: 0.0"></span></a></a>
-              </li>
-            </ul>
-          </span>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <img src="/images/lang/flag_de.gif"/>
+                    <span class="caret"></span></a></a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="/en/reservation-form.html"
+                        ><img src="/images/lang/flag_en.gif" /><span
+                          style="padding-left:10px"
+                          >Englisch</span
+                        ></a
+                      >
+                    </li>
+                    <li>
+                      <a href="/de/reservation-form.html"
+                        ><img src="/images/lang/flag_de.gif" /><span
+                          style="padding-left:10px"
+                          >Deutsch</span
+                        ></a
+                      >
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </span>
         </div>
       </nav>
 

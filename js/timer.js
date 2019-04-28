@@ -5,6 +5,7 @@ $(document).ready(function() {
     var date = new Date(config.keywords.secret.time);
     function secretLoader() {
       var now = Date.now();
+      console.log("asdfsadf");
       if (date.valueOf() <= now) {
         $("#hide-after-reveal").css("display", "none");
       } else {
