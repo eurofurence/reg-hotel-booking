@@ -31,7 +31,9 @@ Keep in mind that you have to update this for both the english and german versio
 
 ### Adjust dates
 
-The date range of accepted arrival and departure dates have to be maintained in the `reservation-form.html` of the corresponding language. Find the fields with the ids "date1s" (earliest arrival date), "date1e" (latest arrival date), "date2s" (earliest departure date), and "date2e" (latest departure date).
+The date range of accepted arrival and departure dates are maintained in the `config.js` of the corresponding language. You can set different date formats for different languages. In this default installation, the format for german is dd.mm.yyyy (e.g. 12.08.2019) while the format for english is mm/dd/yyyy (e.g. 08/12/2019). For both the arrival and departure dates, you can set the earliest, latest, and default values.
+
+Please note that the default values are only applied if the user has not interacted with the form yet. If the user selected their own dates previously, they take precedence over the default values when the page is loaded.
 
 Keep in mind that you have to update this for both the english and german version so that they stay in sync.
 

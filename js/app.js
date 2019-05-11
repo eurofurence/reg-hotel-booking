@@ -1,3 +1,5 @@
+var config;
+
 function isMainPage() {
   return $("#mainpage").length > 0;
 }
@@ -80,32 +82,37 @@ function setInitialRoomtype() {
   changedRoomtype(initialType);
 }
 
-function initializeDatepicker() {
+function initializeDatepicker(dates) {
   var datepickerLanguage = $("#languagecode").attr("class");
   if (datepickerLanguage === "en") {
     datepickerLanguage = "en-GB";
   }
-  var dateFormat = $("#dateformat").val();
-  var d1s = $("#date1s").val();
-  var d1e = $("#date1e").val();
-  var d2s = $("#date2s").val();
-  var d2e = $("#date2e").val();
+  var dateFormat = dates.dateFormat;
+
+  if (!$("#arrival").val()) {
+    $("#arrival").val(dates.arrival.default);
+  }
+  if (!$("#departure").val()) {
+    $("#departure").val(dates.departure.default);
+  }
+
   $("#arrival").datepicker({
     language: datepickerLanguage,
     format: dateFormat,
-    startDate: d1s,
-    endDate: d1e
+    startDate: dates.arrival.earliest,
+    endDate: dates.arrival.latest
   });
   $("#departure").datepicker({
     language: datepickerLanguage,
     format: dateFormat,
-    startDate: d2s,
-    endDate: d2e
+    startDate: dates.departure.earliest,
+    endDate: dates.departure.latest
   });
 }
 
 function dateConv(str) {
-  var format = $("#dateformat").val();
+  if (!config) return;
+  var format = config.dates.dateFormat;
   var res = str;
   if (format === "mm/dd/yyyy") {
     res = res.replace(/([0-9]{2})\/([0-9]{2})\/([0-9]{4})/, "$3-$1-$2");
@@ -130,35 +137,32 @@ function fieldErrorMarker(surroundingSpanId, isOk) {
 }
 
 function areDatesOk() {
+  if (!config) {
+    return false;
+  }
   var arrival_ok = true;
   var departure_ok = true;
-  var messages = "";
 
   var arrival = dateConv($("#arrival").val());
-  var arr_start = dateConv($("#date1s").val());
-  var arr_end = dateConv($("#date1e").val());
+  var arr_start = dateConv(config.dates.arrival.earliest);
+  var arr_end = dateConv(config.dates.arrival.latest);
   if (arrival === "" || arr_start === "" || arr_end === "") {
-    messages += "unparseable date for arrival\n";
     arrival_ok = false;
   }
   var departure = dateConv($("#departure").val());
-  var dep_start = dateConv($("#date2s").val());
-  var dep_end = dateConv($("#date2e").val());
+  var dep_start = dateConv(config.dates.departure.earliest);
+  var dep_end = dateConv(config.dates.departure.latest);
   if (departure === "" || dep_start === "" || dep_end === "") {
-    messages += "unparseable date for departure\n";
     departure_ok = false;
   }
   if (!(arrival < departure)) {
-    messages += "arrival must be before departure date\n";
     arrival_ok = false;
     departure_ok = false;
   }
   if (arrival < arr_start || arr_end < arrival) {
-    messages += "arrival date too early or too late\n";
     arrival_ok = false;
   }
   if (departure < dep_start || dep_end < departure) {
-    messages += "departure date too early or too late\n";
     departure_ok = false;
   }
   fieldErrorMarker("#arrival_error", arrival_ok);
@@ -315,11 +319,7 @@ function setupRoomTypes(roomTypes) {
 
 function loadConfig(cb) {
   $.ajax("config.json", {
-    success: function(data) {
-      setupRoomTypes(data.roomtypes);
-
-      cb(data);
-    }
+    success: cb
   });
 }
 
@@ -330,13 +330,14 @@ $(document).ready(function() {
     unhideInfoWell();
   }
   if (isFormPage()) {
-    loadConfig(function() {
+    loadConfig(function(data) {
+      config = data;
+      setupRoomTypes(data.roomtypes);
+
       preventSubmitUntilConfirmed();
 
       switchActiveOnRoomsize();
       setInitialRoomsize();
-
-      initializeDatepicker();
 
       switchActiveOnRoomtype();
       setInitialRoomtype();
@@ -347,11 +348,13 @@ $(document).ready(function() {
       switchSubmitOnChangedDates();
       switchSubmitOnCommentChange();
 
-      potentialChangeInSubmitState();
-
       restoreFormValues();
 
       setupFormValueStoring();
+
+      initializeDatepicker(data.dates);
+
+      potentialChangeInSubmitState();
     });
   }
 });

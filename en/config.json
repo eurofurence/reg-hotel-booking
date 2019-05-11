@@ -22,6 +22,19 @@
       "price3": 19
     }
   ],
+  "dates": {
+    "dateFormat": "mm/dd/yyyy",
+    "arrival": {
+      "earliest": "08/11/2019",
+      "default": "08/14/2019",
+      "latest": "08/19/2019"
+    },
+    "departure": {
+      "earliest": "08/11/2019",
+      "default": "08/18/2019",
+      "latest": "08/19/2019"
+    }
+  },
   "mail": {
     "recipient": "demo@mailinator.com",
     "subject": "Room Inquiry {{keyword}} - {{secret}}",
