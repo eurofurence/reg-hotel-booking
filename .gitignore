@@ -64,3 +64,12 @@ typings/
 
 # next.js build output
 .next
+
+# dependencies - download them to your local installation
+css/bootstrap-bootswatch-theme-lumen.min.css
+css/bootstrap-datepicker3.min.css
+js/bootstrap-datepicker.min.js
+js/bootstrap.min.js
+js/jquery-3.2.1.min.js
+
+
