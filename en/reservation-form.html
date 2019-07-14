@@ -36,13 +36,13 @@
           <span id="languagecode" class="en">
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="language_dropdown_toggle">
                   <img src="../images/lang/flag_en.gif"/>
                   <span class="caret"></span
                 ></a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a href="../en/reservation-form.html"
+                    <a href="../en/reservation-form.html" id="language_en"
                       ><img src="../images/lang/flag_en.gif" /><span
                         style="padding-left:10px"
                         >English</span
@@ -50,7 +50,7 @@
                     >
                   </li>
                   <li>
-                    <a href="../de/reservation-form.html"
+                    <a href="../de/reservation-form.html" id="language_de"
                       ><img src="../images/lang/flag_de.gif" /><span
                         style="padding-left:10px"
                         >German</span
@@ -73,7 +73,7 @@
               name="roomsizeinitial"
               value="1"
             />
-            <p class="control-label col-xs-2">Room Size</p>
+            <p class="control-label col-xs-2" id="roomsize_label">Room Size</p>
             <div class="col-xs-1"></div>
             <label id="size_single_label" class="btn btn-primary col-xs-3">
               <input type="radio" id="size_single" name="roomsize" value="1" />
@@ -95,7 +95,7 @@
             <p class="col-xs-3"><b>3rd Person</b></p>
           </div>
           <div class="form-group">
-            <label class="control-label col-xs-2" for="name2">Name</label>
+            <label class="control-label col-xs-2" for="name1">Name</label>
             <div class="col-xs-1"></div>
             <div class="col-xs-3 firstpersoncolumn">
               <input
@@ -135,7 +135,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="control-label col-xs-2" for="street2"
+            <label class="control-label col-xs-2" for="street1"
               >Street Address</label
             >
             <div class="col-xs-1"></div>
@@ -177,7 +177,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="control-label col-xs-2" for="city2"
+            <label class="control-label col-xs-2" for="city1"
               >City and ZIP</label
             >
             <div class="col-xs-1"></div>
@@ -219,7 +219,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="control-label col-xs-2" for="country2">Country</label>
+            <label class="control-label col-xs-2" for="country1">Country</label>
             <div class="col-xs-1"></div>
             <div class="col-xs-3 firstpersoncolumn">
               <input
@@ -259,7 +259,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="control-label col-xs-2" for="email2"
+            <label class="control-label col-xs-2" for="email1"
               >Email Address</label
             >
             <div class="col-xs-1"></div>
@@ -394,7 +394,7 @@
               value="1"
             />
             <div class="row roomtype template" id="roomtype_template">
-              <label class="control-label col-xs-2">Room Type</label>
+              <label class="control-label col-xs-2" id="roomtype_label">Room Type</label>
 
               <div class="col-xs-1"></div>
               <label
@@ -415,7 +415,7 @@
             </div>
             <div class="row">
               <div class="col-xs-3"></div>
-              <p class="col-xs-9">
+              <p class="col-xs-9" id="footnote_label">
                 *includes breakfast, sales tax, city tax. If your chosen
                 category is no longer available, the hotel may reserve a higher
                 category for you. If you do not want this, please state that in
