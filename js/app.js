@@ -211,7 +211,7 @@ function storeFormValues() {
 }
 
 function restoreFormValues() {
-  const values = JSON.parse(
+  var values = JSON.parse(
     window.localStorage.getItem("hotelFormData") || "{}"
   );
 
