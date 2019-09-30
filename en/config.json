@@ -42,7 +42,7 @@
   },
   "keywords": {
     "secret": {
-      "location": "/secret.txt",
+      "location": "../secret.txt",
       "time": "2020-01-18T07:00:00+01:00"
     },
     "keyword": "Demo Convention"
