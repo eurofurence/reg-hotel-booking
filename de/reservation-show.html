@@ -10,6 +10,7 @@
       rel="stylesheet"
       href="../css/bootstrap-bootswatch-theme-lumen.min.css"
     />
+    <link rel="stylesheet" href="../css/app.css" />
     <link rel="stylesheet" href="../css/bootstrap-datepicker3.min.css" />
     <script src="../js/jquery-3.2.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
@@ -69,8 +70,8 @@
         id="ready-text"
         style="display: none; margin-bottom: 2em;"
       >
-        <div class="col-xs-12">
-          Du kannst jetzt deine Buchungsmail abschicken. Du kannst dazu auf <a href="">diesen Link</a> klicken, um die E-Mail in deinem E-Mailprogramm zu öffnen, wenn es richtig konfiguriert ist. Du kannst auch den untenstehenden Text in dein E-Mailprogramm kopieren:
+        <div class="col-xs-12"><p>Du kannst jetzt deine Buchungsmail abschicken. Du kannst dazu auf den folgenden Button klicken, um die E-Mail in deinem E-Mailprogramm zu öffnen, <strong>wenn es richtig konfiguriert ist</strong>. Du kannst auch den untenstehenden Text in dein E-Mailprogramm kopieren:</p>
+          <p><a href="#" id="ready-text-start" class="btn btn-primary btn-sm">Senden vorbereiten</a></p>
         </div>
       </div>
 
@@ -92,7 +93,8 @@
       <div class="form-group">
         <label class="control-label col-xs-2" for="email_to">An:</label>
         <div class="col-xs-10">
-          <input class="form-control" id="email_to" name="email_to" value="" />
+          <input class="form-control" id="email_to" name="email_to" value="" disabled />
+          <button id="ready-text-copyTo" class="btn btn-default input-append" type="button">Kopieren</button>
         </div>
       </div>
       <div class="form-group">
@@ -105,7 +107,9 @@
             id="email_subject"
             name="email_subject"
             value=""
+            disabled
           />
+          <button id="ready-text-copySubject" class="btn btn-default input-append" type="button">Kopieren</button>
         </div>
       </div>
       <div class="form-group">
@@ -115,7 +119,9 @@
             rows="40"
             id="email"
             name="email"
+            disabled
           ></textarea>
+          <button id="ready-text-copyBody" class="btn btn-default input-append" type="button">Kopieren</button>
         </div>
       </div>
 

@@ -17,3 +17,9 @@
 .roomtype:first-of-type label:first-child {
   visibility: visible;
 }
+
+.input-append {
+  position: absolute;
+  right: 15px;
+  top: 0;
+}
