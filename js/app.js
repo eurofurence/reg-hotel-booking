@@ -23,23 +23,32 @@ function updatePrices() {
   var roomsize = $("input[name=roomsize]:checked").val();
   var maxType = $("#roomtype_max").val();
   for (var i = 1; i <= maxType; i++) {
-    var price = $("#price" + i + "_" + roomsize).val() + "*";
+    var price = "(" + $("#price" + i + "_" + roomsize).val() + "*)";
     $("#roomtype" + i + "price").text(price);
   }
 }
 
-function activateLabel(label, active) {
+function activateGroup(collapsableElement, active) {
+  if (active)
+    $(collapsableElement).addClass("show");
+  else
+    $(collapsableElement).removeClass("show");
+}
+
+function activateElement(selector, active) {
   if (active) {
-    $(label).addClass("active");
+    $(selector).addClass("active");
+    if ($(selector).hasClass("collapse")) $(selector).collapse("show");
   } else {
-    $(label).removeClass("active");
+    $(selector).removeClass("active");
+    if ($(selector).hasClass("collapse")) $(selector).collapse("hide");
   }
 }
 
 function changedRoomsize(value) {
-  activateLabel("#size_single_label", value === "1");
-  activateLabel("#size_double_label", value === "2");
-  activateLabel("#size_triple_label", value === "3");
+  activateElement("#ef-firstpersongroup", value === "1" || value === "2" || value === "3");
+  activateElement("#ef-secondpersongroup", value === "2" || value === "3");
+  activateElement("#ef-thirdpersongroup", value === "3");
   $("input.secondperson").prop("disabled", value === "1");
   $("input.thirdperson").prop("disabled", value === "1" || value === "2");
   updatePrices();
@@ -66,7 +75,7 @@ function setInitialRoomsize() {
 function changedRoomtype(value) {
   var maxType = $("#roomtype_max").val();
   for (var i = 1; i <= maxType; i++) {
-    activateLabel("#roomtype" + i + "button", i == value);
+    activateElement("#roomtype" + i + "button", i == value);
   }
 }
 
@@ -303,7 +312,7 @@ function setupRoomTypes(roomTypes) {
     element.find("label.btn").attr("id", "roomtype" + i + "button");
     element.find("label.btn input").attr("id", "roomtype" + i);
     element.find("label.btn input").val(i);
-    element.find("label.btn").append(roomType.name);
+    element.find("label.btn > span:first-of-type").text(roomType.name);
     element.find("a").attr("href", roomType.infolink);
     element.find("#roomtypeprice").attr("id", "roomtype" + i + "price");
 

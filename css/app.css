@@ -1,25 +1,59 @@
+input[type="radio"], input[type="checkbox"] {
+  margin: auto;
+  position: relative;
+  top: 2px;
+}
+.btn-group {
+  white-space: nowrap;
+}
+.btn-group .btn {
+  float: none;
+  display: inline-block;
+}
+.btn-group .btn + .btn {
+  margin-left: 0;
+}
+
+.btn-group {
+  margin-bottom: 0.33em;
+}
+
 .template {
   display: none;
-}
-
-.roomtype {
-  margin-top: 2px;
-}
-
-.roomtype:first-of-type {
-  margin-top: 0;
-}
-
-.roomtype label:first-child {
-  visibility: hidden;
-}
-
-.roomtype:first-of-type label:first-child {
-  visibility: visible;
 }
 
 .input-append {
   position: absolute;
   right: 15px;
   top: 0;
+}
+.ef-formgroup {
+  position: relative;
+  border: 1px solid #158cba;
+  border-radius: 4px;
+  margin: 15px -15px;
+}
+.ef-formgroup > *:last-of-type,
+.ef-formgroup > div > *:last-of-type {
+  margin-bottom: 15px;
+}
+
+.ef-formgroup > div {
+  padding-top: 60px;
+}
+
+.ef-formgroup h3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 12px;
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  background-color: #f8f8f8;
+}
+
+.ef-formgroup-secondary {
+  border: 1px solid #e7e7e7;
+  border-radius: 4px;
 }
