@@ -21,22 +21,33 @@ Abreise:     {{departure}}
 {{#hasSecondPerson}}
 
 2. Person:
+{{#name2}}
              {{name2}}
              {{street2}}
              {{city2}}
              {{country2}}
              {{email2}}
              {{phone2}}
+{{/name2}}
+{{^name2}}
+             (Angaben nicht verfügbar)
+{{/name2}}
 {{/hasSecondPerson}}
 {{#hasThirdPerson}}
 
 3. Person:
+{{#name3}}
              {{name3}}
              {{street3}}
              {{city3}}
              {{country3}}
              {{email3}}
              {{phone3}}
+{{/name3}}
+{{^name3}}
+             (Angaben nicht verfügbar)
+{{/name3}}
+
 {{/hasThirdPerson}}
 {{#comments}}
 

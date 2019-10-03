@@ -33,32 +33,38 @@
             >
           </div>
           <span id="languagecode" class="de">
-              <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="language_dropdown_toggle">
-                    <img src="../images/lang/flag_de.gif"/>
-                    <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a href="../en/reservation-form.html" id="language_en"
-                        ><img src="../images/lang/flag_en.gif" /><span
-                          style="padding-left:10px"
-                          >Englisch</span
-                        ></a
-                      >
-                    </li>
-                    <li>
-                      <a href="../de/reservation-form.html" id="language_de"
-                        ><img src="../images/lang/flag_de.gif" /><span
-                          style="padding-left:10px"
-                          >Deutsch</span
-                        ></a
-                      >
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </span>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a
+                  class="dropdown-toggle"
+                  data-toggle="dropdown"
+                  href="#"
+                  id="language_dropdown_toggle"
+                >
+                  <img src="../images/lang/flag_de.gif"/>
+                  <span class="caret"></span
+                ></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="../en/reservation-form.html" id="language_en"
+                      ><img src="../images/lang/flag_en.gif" /><span
+                        style="padding-left:10px"
+                        >Englisch</span
+                      ></a
+                    >
+                  </li>
+                  <li>
+                    <a href="../de/reservation-form.html" id="language_de"
+                      ><img src="../images/lang/flag_de.gif" /><span
+                        style="padding-left:10px"
+                        >Deutsch</span
+                      ></a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </span>
         </div>
       </nav>
       <div class="container-fluid">
@@ -72,26 +78,54 @@
             />
             <h3>Anzahl Personen</h3>
             <div>
-              <label id="size_single_label" class="btn btn-primary col-xs-12 col-sm-4">
-                <input type="radio" id="size_single" name="roomsize" value="1" />
+              <label
+                id="size_single_label"
+                class="btn btn-primary col-xs-12 col-sm-4"
+              >
+                <input
+                  type="radio"
+                  id="size_single"
+                  name="roomsize"
+                  value="1"
+                />
                 &nbsp; Einzelzimmer
               </label>
-              <label id="size_double_label" class="btn btn-primary col-xs-12 col-sm-4">
-                <input type="radio" id="size_double" name="roomsize" value="2" />
+              <label
+                id="size_double_label"
+                class="btn btn-primary col-xs-12 col-sm-4"
+              >
+                <input
+                  type="radio"
+                  id="size_double"
+                  name="roomsize"
+                  value="2"
+                />
                 &nbsp; Doppelzimmer
               </label>
-              <label id="size_triple_label" class="btn btn-primary col-xs-12 col-sm-4">
-                <input type="radio" id="size_triple" name="roomsize" value="3" />
+              <label
+                id="size_triple_label"
+                class="btn btn-primary col-xs-12 col-sm-4"
+              >
+                <input
+                  type="radio"
+                  id="size_triple"
+                  name="roomsize"
+                  value="3"
+                />
                 &nbsp; Drei-Personen-Zimmer
               </label>
             </div>
           </div>
 
-          <div id="ef-firstpersongroup" class="ef-formgroup container-fluid collapse">
+          <div
+            id="ef-firstpersongroup"
+            class="ef-formgroup container-fluid collapse"
+          >
             <div>
               <h3>1. Person</h3>
 
-              <label for="name1" class="col-xs-12 col-sm-12">Vor- und Nachname
+              <label for="name1" class="col-xs-12 col-sm-12"
+                >Vor- und Nachname
                 <input
                   title="Name 1. Person"
                   class="form-control firstperson"
@@ -101,10 +135,12 @@
                   placeholder="Name 1. Person"
                   value=""
                   maxlength="255"
+                  required
                 />
               </label>
 
-              <label for="street1" class="col-xs-12 col-sm-4">Straße u. Hausnummer
+              <label for="street1" class="col-xs-12 col-sm-4"
+                >Straße u. Hausnummer
                 <input
                   title="Anschrift 1. Person"
                   class="form-control firstperson"
@@ -114,10 +150,12 @@
                   placeholder="Anschrift 1. Person"
                   value=""
                   maxlength="255"
+                  required
                 />
               </label>
 
-              <label for="city1" class="col-xs-12 col-sm-4">PLZ u. Ort
+              <label for="city1" class="col-xs-12 col-sm-4"
+                >PLZ u. Ort
                 <input
                   title="PLZ u. Ort 1. Person"
                   class="form-control firstperson"
@@ -127,10 +165,12 @@
                   placeholder="PLZ u. Ort 1. Person"
                   value=""
                   maxlength="255"
+                  required
                 />
               </label>
 
-              <label for="country1" class="col-xs-12 col-sm-4">Land
+              <label for="country1" class="col-xs-12 col-sm-4"
+                >Land
                 <input
                   title="Land 1. Person"
                   class="form-control firstperson"
@@ -140,10 +180,12 @@
                   placeholder="Land 1. Person"
                   value=""
                   maxlength="255"
+                  required
                 />
               </label>
 
-              <label for="email1" class="col-xs-12 col-sm-6">E-Mailadresse
+              <label for="email1" class="col-xs-12 col-sm-6"
+                >E-Mailadresse
                 <input
                   title="person1@mail"
                   class="form-control firstperson"
@@ -153,10 +195,12 @@
                   placeholder="person1@mail"
                   value=""
                   maxlength="255"
+                  required
                 />
               </label>
 
-              <label for="phone1" class="col-xs-12 col-sm-6">Telefonnummer
+              <label for="phone1" class="col-xs-12 col-sm-6"
+                >Telefonnummer
                 <input
                   title="1. Telefonnummer"
                   class="form-control firstperson"
@@ -171,11 +215,15 @@
             </div>
           </div>
 
-          <div id="ef-secondpersongroup" class="ef-formgroup container-fluid collapse">
+          <div
+            id="ef-secondpersongroup"
+            class="ef-formgroup container-fluid collapse"
+          >
             <div>
               <h3>2. Person</h3>
-              
-              <label for="name1" class="col-xs-12 col-sm-12">Vor- und Nachname
+
+              <label for="name1" class="col-xs-12 col-sm-12"
+                >Vor- und Nachname
                 <input
                   title="Name 2. Person"
                   class="form-control secondperson"
@@ -188,7 +236,8 @@
                 />
               </label>
 
-              <label for="street1" class="col-xs-12 col-sm-4">Straße u. Hausnummer
+              <label for="street1" class="col-xs-12 col-sm-4"
+                >Straße u. Hausnummer
                 <input
                   title="Anschrift 2. Person"
                   class="form-control secondperson"
@@ -201,7 +250,8 @@
                 />
               </label>
 
-              <label for="city1" class="col-xs-12 col-sm-4">PLZ u. Ort
+              <label for="city1" class="col-xs-12 col-sm-4"
+                >PLZ u. Ort
                 <input
                   title="PLZ u. Ort 2. Person"
                   class="form-control secondperson"
@@ -214,7 +264,8 @@
                 />
               </label>
 
-              <label for="country1" class="col-xs-12 col-sm-4">Land
+              <label for="country1" class="col-xs-12 col-sm-4"
+                >Land
                 <input
                   title="Land 2. Person"
                   class="form-control secondperson"
@@ -227,7 +278,8 @@
                 />
               </label>
 
-              <label for="email1" class="col-xs-12 col-sm-6">E-Mailadresse
+              <label for="email1" class="col-xs-12 col-sm-6"
+                >E-Mailadresse
                 <input
                   title="person1@mail"
                   class="form-control secondperson"
@@ -240,7 +292,8 @@
                 />
               </label>
 
-              <label for="phone1" class="col-xs-12 col-sm-6">Telefonnummer
+              <label for="phone1" class="col-xs-12 col-sm-6"
+                >Telefonnummer
                 <input
                   title="2. Telefonnummer"
                   class="form-control secondperson"
@@ -255,11 +308,15 @@
             </div>
           </div>
 
-          <div id="ef-thirdpersongroup" class="ef-formgroup container-fluid collapse">
+          <div
+            id="ef-thirdpersongroup"
+            class="ef-formgroup container-fluid collapse"
+          >
             <div>
               <h3>3. Person</h3>
-              
-              <label for="name1" class="col-xs-12 col-sm-12">Vor- und Nachname
+
+              <label for="name1" class="col-xs-12 col-sm-12"
+                >Vor- und Nachname
                 <input
                   title="Name 3. Person"
                   class="form-control thirdperson"
@@ -271,8 +328,9 @@
                   maxlength="255"
                 />
               </label>
-  
-              <label for="street1" class="col-xs-12 col-sm-4">Straße u. Hausnummer
+
+              <label for="street1" class="col-xs-12 col-sm-4"
+                >Straße u. Hausnummer
                 <input
                   title="Anschrift 3. Person"
                   class="form-control thirdperson"
@@ -284,8 +342,9 @@
                   maxlength="255"
                 />
               </label>
-  
-              <label for="city1" class="col-xs-12 col-sm-4">PLZ u. Ort
+
+              <label for="city1" class="col-xs-12 col-sm-4"
+                >PLZ u. Ort
                 <input
                   title="PLZ u. Ort 3. Person"
                   class="form-control thirdperson"
@@ -297,8 +356,9 @@
                   maxlength="255"
                 />
               </label>
-  
-              <label for="country1" class="col-xs-12 col-sm-4">Land
+
+              <label for="country1" class="col-xs-12 col-sm-4"
+                >Land
                 <input
                   title="Land 3. Person"
                   class="form-control thirdperson"
@@ -310,8 +370,9 @@
                   maxlength="255"
                 />
               </label>
-  
-              <label for="email1" class="col-xs-12 col-sm-6">E-Mailadresse
+
+              <label for="email1" class="col-xs-12 col-sm-6"
+                >E-Mailadresse
                 <input
                   title="person1@mail"
                   class="form-control thirdperson"
@@ -323,8 +384,9 @@
                   maxlength="255"
                 />
               </label>
-  
-              <label for="phone3" class="col-xs-12 col-sm-6">Telefonnummer
+
+              <label for="phone3" class="col-xs-12 col-sm-6"
+                >Telefonnummer
                 <input
                   title="3. Telefonnummer"
                   class="form-control thirdperson"
@@ -342,8 +404,9 @@
           <div class="formgroup ef-formgroup container-fluid">
             <div>
               <h3>Zeitraum</h3>
-              <label class="col-xs-12 col-sm-4" for="arrival">Anreise
-              <span class="has-error" id="arrival_error">
+              <label class="col-xs-12 col-sm-4" for="arrival"
+                >Anreise
+                <span class="has-error" id="arrival_error">
                   <input
                     title="Anreisedatum"
                     class="form-control"
@@ -355,7 +418,8 @@
                   />
                 </span>
               </label>
-              <label class="col-xs-12 col-sm-4" for="departure">Abreise
+              <label class="col-xs-12 col-sm-4" for="departure"
+                >Abreise
                 <span class="has-error" id="departure_error">
                   <input
                     title="Abreisedatum"
@@ -390,22 +454,35 @@
               <div class="col-sm-12 roomtype template" id="roomtype_template">
                 <div class="btn-group">
                   <label id="roomtypebutton" class="btn btn-primary">
-                    <input type="radio" id="roomtype" name="roomtype" value="" />
+                    <input
+                      type="radio"
+                      id="roomtype"
+                      name="roomtype"
+                      value=""
+                    />
                     &nbsp;
                     <span>Zimmertyp</span>
-                    <span id="roomtypeprice">(?€*)</span>
-                  </label><a class="btn btn-default" target="_blank" href="">Details</a>
+                    <span id="roomtypeprice">(?€*)</span> </label
+                  ><a class="btn btn-default" target="_blank" href=""
+                    >Details</a
+                  >
                 </div>
                 <input type="hidden" id="price_1" name="price_1" />
                 <input type="hidden" id="price_2" name="price_2" />
                 <input type="hidden" id="price_3" name="price_3" />
               </div>
               <p id="footnote_label">
-                * Preise pro Nacht und Zimmer. Einschließlich Frühstück, MWSt, Berliner Bettensteuer. Wenn Deine gewählte Kategorie ausgebucht ist, kann es passieren, dass das Hotel eine höhere Kategorie für Dich reserviert. Wenn Du das nicht möchtest, dies bitte einfach im Kommentarfeld vermerken, oder bei Erhalt der Reservierungsbestätigung das Zimmer ans Hotel zurückgeben. Alle Angaben ohne Gewähr! Dieses Formular führt keine Verfügbarkeitsprüfung durch!
+                * Preise pro Nacht und Zimmer. Einschließlich Frühstück, MWSt,
+                Berliner Bettensteuer. Wenn Deine gewählte Kategorie ausgebucht
+                ist, kann es passieren, dass das Hotel eine höhere Kategorie für
+                Dich reserviert. Wenn Du das nicht möchtest, dies bitte einfach
+                im Kommentarfeld vermerken, oder bei Erhalt der
+                Reservierungsbestätigung das Zimmer ans Hotel zurückgeben. Alle
+                Angaben ohne Gewähr! Dieses Formular führt keine
+                Verfügbarkeitsprüfung durch!
               </p>
             </div>
           </div>
-
 
           <div class="ef-formgroup form-group">
             <h3>Kommentare</h3>
@@ -430,21 +507,25 @@
                     id="understood"
                     name="understood"
                     value="yes"
-                  />&nbsp;Mir ist bewusst, dass ein Klick auf &#39;Email generieren&#39; noch keine Zimmerreservierung durchführt. Ich muss den erzeugten Text selbst per Email ans Hotel schicken. Erst die Antwort vom Hotel wird mir sagen, ob ich ein Zimmer reservieren konnte.</label
+                  />&nbsp;Mir ist bewusst, dass ein Klick auf &#39;Email
+                  generieren&#39; noch keine Zimmerreservierung durchführt. Ich
+                  muss den erzeugten Text selbst per Email ans Hotel schicken.
+                  Erst die Antwort vom Hotel wird mir sagen, ob ich ein Zimmer
+                  reservieren konnte.</label
                 >
               </div>
               <div class="col-xs-12">
-                  <input
-                    type="hidden"
-                    id="cannot_submit"
-                    name="ignore"
-                    value="Du kannst die Email noch nicht generieren. Bitte fülle alle Pflichtfelder korrekt aus und setze den Haken bei &#39;Bestätigung&#39;, danach sollte es gehen. Dein Kommentar darf maximal 2000 Zeichen lang sein. Felder mit Validierungsfehlern sind rot markiert."
-                  />
-                  <button type="submit" id="submitbutton" class="btn btn-primary">
-                    Email generieren
-                  </button>
-                </div>
+                <input
+                  type="hidden"
+                  id="cannot_submit"
+                  name="ignore"
+                  value="Du kannst die Email noch nicht generieren. Bitte fülle alle Pflichtfelder korrekt aus und setze den Haken bei &#39;Bestätigung&#39;, danach sollte es gehen. Dein Kommentar darf maximal 2000 Zeichen lang sein. Felder mit Validierungsfehlern sind rot markiert."
+                />
+                <button type="submit" id="submitbutton" class="btn btn-primary">
+                  Email generieren
+                </button>
               </div>
+            </div>
           </div>
         </form>
       </div>

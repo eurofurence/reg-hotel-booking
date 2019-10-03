@@ -29,10 +29,8 @@ function updatePrices() {
 }
 
 function activateGroup(collapsableElement, active) {
-  if (active)
-    $(collapsableElement).addClass("show");
-  else
-    $(collapsableElement).removeClass("show");
+  if (active) $(collapsableElement).addClass("show");
+  else $(collapsableElement).removeClass("show");
 }
 
 function activateElement(selector, active) {
@@ -46,7 +44,10 @@ function activateElement(selector, active) {
 }
 
 function changedRoomsize(value) {
-  activateElement("#ef-firstpersongroup", value === "1" || value === "2" || value === "3");
+  activateElement(
+    "#ef-firstpersongroup",
+    value === "1" || value === "2" || value === "3"
+  );
   activateElement("#ef-secondpersongroup", value === "2" || value === "3");
   activateElement("#ef-thirdpersongroup", value === "3");
   $("input.secondperson").prop("disabled", value === "1");
@@ -205,7 +206,12 @@ function canSubmit() {
   var datesOk = areDatesOk();
   var disclaimerOk = isDisclaimerAccepted();
   var commentsOk = isCommentNotTooLong();
-  return datesOk && disclaimerOk && commentsOk;
+  var requiredFieldsOk = areRequiredFieldsOk();
+  return datesOk && disclaimerOk && commentsOk && requiredFieldsOk;
+}
+
+function areRequiredFieldsOk() {
+  return !document.querySelector("input:invalid");
 }
 
 function storeFormValues() {
@@ -217,12 +223,12 @@ function storeFormValues() {
   data.roomsize = elements.roomsize.value;
   data.roomtype = elements.roomtype.value;
   localStorage.setItem("hotelFormData", JSON.stringify(data));
+
+  potentialChangeInSubmitState();
 }
 
 function restoreFormValues() {
-  var values = JSON.parse(
-    window.localStorage.getItem("hotelFormData") || "{}"
-  );
+  var values = JSON.parse(window.localStorage.getItem("hotelFormData") || "{}");
 
   if (typeof values.roomsize === "undefined") {
     values.roomsize = "1";
