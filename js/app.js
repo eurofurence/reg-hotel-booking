@@ -97,21 +97,23 @@ function initializeDatepicker(dates) {
     datepickerLanguage = "en-GB";
   }
   var dateFormat = dates.dateFormat;
+  var arrivalElem = $("#arrival");
+  var departureElem = $("#departure");
 
-  if (!$("#arrival").val()) {
-    $("#arrival").val(dates.arrival.default);
+  if (!arrivalElem.val()) {
+    arrivalElem.val(dates.arrival.default);
   }
-  if (!$("#departure").val()) {
-    $("#departure").val(dates.departure.default);
+  if (!departureElem.val()) {
+    departureElem.val(dates.departure.default);
   }
 
-  $("#arrival").datepicker({
+  arrivalElem.datepicker({
     language: datepickerLanguage,
     format: dateFormat,
     startDate: dates.arrival.earliest,
     endDate: dates.arrival.latest
   });
-  $("#departure").datepicker({
+  departureElem.datepicker({
     language: datepickerLanguage,
     format: dateFormat,
     startDate: dates.departure.earliest,
@@ -305,7 +307,8 @@ function setupRoomTypes(roomTypes) {
 
   roomTypes.forEach(function(roomType, idx) {
     var i = idx + 1;
-    var element = $("#roomtype_template").clone();
+    var roomTypeTemplateElem = $("#roomtype_template");
+    var element = roomTypeTemplateElem.clone();
     element.attr("id", null);
     element.removeClass("template");
 
@@ -322,7 +325,7 @@ function setupRoomTypes(roomTypes) {
       element.find("#price_" + j).attr("id", "price" + i + "_" + j);
     }
 
-    $("#roomtype_template").before(element);
+    roomTypeTemplateElem.before(element);
   });
 }
 
