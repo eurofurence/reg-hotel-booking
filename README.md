@@ -13,7 +13,7 @@ Since this is a static webpage, you can just copy and paste the contents of this
 
 ### Adjust Mail template
 
-This app is available in German and Englisch. Therefore, there is one version of the content files (html, config and mailtemplate) for both languages. The path of the mail template can be configured in the config.json of the respective language directory.
+This app is available in German and English. Therefore, there is one version of the content files (html, config and mailtemplate) for both languages. The path of the mail template can be configured in the config.json of the respective language directory.
 
 The path that is specified under the `mail.template` property of the config.json is relative to the location of the `reservation-show.html` page., e.g. if you specify "mail.txt" as path, the mail template should be in the same directory as the html file.
 
