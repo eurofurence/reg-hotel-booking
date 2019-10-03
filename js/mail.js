@@ -21,7 +21,7 @@ function render(config, template) {
   $("#email").text(body);
   $("#email_to").val(config.mail.recipient);
   $("#email_subject").val(subject);
-  $("#ready-text a").attr(
+  $("#ready-text-start").attr(
     "href",
     "mailto:" +
       config.mail.recipient +
@@ -30,6 +30,11 @@ function render(config, template) {
       "&body=" +
       encodeURIComponent(body)
   );
+
+
+  $("#ready-text-copyTo").click({textSource: document.getElementById("email_to")}, copyMailContents);
+  $("#ready-text-copySubject").click({textSource: document.getElementById("email_subject")}, copyMailContents);
+  $("#ready-text-copyBody").click({textSource: document.getElementById("email")}, copyMailContents);
 
   var keywords = config.keywords;
   var configKeywords = Object.keys(keywords);
@@ -83,6 +88,16 @@ function setupSecretLoader(config, template, key) {
     }
   }
   requestAnimationFrame(secretLoader);
+}
+
+function copyMailContents(event) {
+  event.data.textSource.disabled = false;
+  event.data.textSource.select();
+  event.data.textSource.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  event.data.textSource.disabled = true;
+
+  event.target.classList.replace("btn-default", "btn-success");
 }
 
 function loadTemplate(url, cb) {
