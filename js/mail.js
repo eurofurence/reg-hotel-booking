@@ -31,10 +31,18 @@ function render(config, template) {
       encodeURIComponent(body)
   );
 
-
-  $("#ready-text-copyTo").click({textSource: document.getElementById("email_to")}, copyMailContents);
-  $("#ready-text-copySubject").click({textSource: document.getElementById("email_subject")}, copyMailContents);
-  $("#ready-text-copyBody").click({textSource: document.getElementById("email")}, copyMailContents);
+  $("#ready-text-copyTo").click(
+    { textSource: document.getElementById("email_to") },
+    copyMailContents
+  );
+  $("#ready-text-copySubject").click(
+    { textSource: document.getElementById("email_subject") },
+    copyMailContents
+  );
+  $("#ready-text-copyBody").click(
+    { textSource: document.getElementById("email") },
+    copyMailContents
+  );
 
   var keywords = config.keywords;
   var configKeywords = Object.keys(keywords);
@@ -120,6 +128,10 @@ function compileData(data) {
       compiled[configKeywords[i]] = "■■■■■■■";
     }
   }
+
+  compiled.hasSecondPerson =
+    compiled.roomsize === "2" || compiled.roomsize === "3";
+  compiled.hasThirdPerson = compiled.roomsize === "3";
 
   return compiled;
 }

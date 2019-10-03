@@ -18,7 +18,7 @@ Departure:   {{departure}}
              {{country1}}
              {{email1}}
              {{phone1}}
-{{#name2}}
+{{#hasSecondPerson}}
 
 2nd Person:
              {{name2}}
@@ -27,8 +27,8 @@ Departure:   {{departure}}
              {{country2}}
              {{email2}}
              {{phone2}}
-{{/name2}}
-{{#name3}}
+{{/hasSecondPerson}}
+{{#hasThirdPerson}}
 
 3rd Person:
              {{name3}}
@@ -37,7 +37,7 @@ Departure:   {{departure}}
              {{country3}}
              {{email3}}
              {{phone3}}
-{{/name3}}
+{{/hasThirdPerson}}
 {{#comments}}
 
 Additional comments:
