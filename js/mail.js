@@ -133,6 +133,8 @@ function compileData(data) {
     compiled.roomsize === "2" || compiled.roomsize === "3";
   compiled.hasThirdPerson = compiled.roomsize === "3";
 
+  compiled.roomtype = data.roomtypes[compiled.roomtype - 1].name;
+
   return compiled;
 }
 
