@@ -39,27 +39,15 @@ Keep in mind that you have to update this for both the english and german versio
 
 ### Configure Secret code
 
-The Eurofurence hotel booking email has to contain a secret code that is revealed at a specific date. This date is specified in the config.json as a special keyword `secret`. This is an object that contains a `location` and `time` field.
-Keep in mind that you have to update this for both the english and german version so that they stay in sync.
+The Eurofurence hotel booking email has to contain a secret code that is revealed at a specific date. The date and the secret is retrieved from a server. You have to specify the URL of the endpoint where the time and secret can be retrieved in the `timeServer` field in the config.json. Keep in mind that you have to update this for both the english and german version so that they stay in sync.
 
-`time` should be an ISO 8601 date string containing the timezone.
+The endpoint has to answer to a GET request with the following payload:
 
-`location` is the path to the secret resource. In the example this is a simple text file. However, this can be any url that answers to a GET request.
+```json
+{
+  "targetTime": "2019-12-24T18:00:00+01:00",
+  "countdown": 7018580
+}
+```
 
-Since this is the most delicate part of the application, here are some tips for the setup:
-
-#### Protect the secret using server side validation
-
-In a production setting you should probably use server side validation (e.g. using a PHP script), that ensures that the secret is not leaked early instead of just pasting a plain .txt file to the server.
-
-#### Do not return a 2xx response if the secret is not revealed yet
-
-Make sure that your server returns an error code (e.g. 404) if any user tries to access the secret before the reveal time. Otherwise the app might interpret your response for the secret and construct a wrong email-text
-
-#### Use some buffer to ensure the secret is ready at the specified time
-
-The app is configured in a way that it automatically fires a GET request at the time specified in the config.json. However, since not all computers are perfectly in sync, it could be that when it's exactly the reveal time on the users machine, the server might be a couple milliseconds behind.
-
-To avoid a frustrating error message for the user, it is recommended to have a small buffer on the server side validation. E.g. if you reveal the code at 07:00:00, it might make sense to configure the server to respond to requests coming in at 06:59:59 with the secret too.
-
-This buffer should not be more than a few seconds at maximum to give everyone the same chances.
+If the target time is reached, the JSON has to contain an additonal `secret` field that contains the secret as a string.
