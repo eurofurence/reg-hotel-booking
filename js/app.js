@@ -28,11 +28,6 @@ function updatePrices() {
   }
 }
 
-function activateGroup(collapsableElement, active) {
-  if (active) $(collapsableElement).addClass("show");
-  else $(collapsableElement).removeClass("show");
-}
-
 function activateElement(selector, active) {
   if (active) {
     $(selector).addClass("active");
