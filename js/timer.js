@@ -2,34 +2,57 @@ var language = $("html").attr("lang");
 
 $(document).ready(function() {
   loadConfig(function(config) {
-    var date = new Date(config.keywords.secret.time);
-    function secretLoader() {
-      var now = Date.now();
-      if (date.valueOf() <= now) {
-        $("#hide-after-reveal").css("display", "none");
-      } else {
-        var useRelative = date - now < 3600000;
+    function loadTime() {
+      $.ajax(config.timeServer, {
+        success: function(timeResponse) {
+          $("#timeError").css("display", "none");
+          if (timeResponse.countdown <= 0) {
+            $("#hide-after-reveal").css("display", "none");
+          } else {
+            $("#hide-after-reveal").css("display", "block");
+            var start = Date.now();
+            var end = start + timeResponse.countdown * 1000;
 
-        var prefix = getPrefix(language, useRelative);
+            function countdownUpdater() {
+              var now = Date.now();
+              if (end <= now) {
+                $("#hide-after-reveal").css("display", "none");
+              } else {
+                var useRelative = end - now < 3600000;
 
-        var timeString = date.toLocaleDateString(language, {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-          hour: "2-digit",
-          minute: "2-digit"
-        });
-        if (useRelative) {
-          timeString = formatRemainingTime(date - now);
+                var prefix = getPrefix(language, useRelative);
+
+                var timeString = new Date(
+                  timeResponse.targetTime
+                ).toLocaleDateString(language, {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit"
+                });
+                if (useRelative) {
+                  timeString = formatRemainingTime(end - now);
+                }
+
+                document.getElementById("secret-timer").textContent =
+                  prefix + " " + timeString;
+                window.requestAnimationFrame(countdownUpdater);
+              }
+            }
+            requestAnimationFrame(countdownUpdater);
+          }
+        },
+        error: function() {
+          $("#hide-after-reveal").css("display", "none");
+          $("#timeError").css("display", "block");
+
+          setTimeout(loadTime, 5000);
         }
-
-        document.getElementById("secret-timer").textContent =
-          prefix + " " + timeString;
-        window.requestAnimationFrame(secretLoader);
-      }
+      });
     }
-    requestAnimationFrame(secretLoader);
+    loadTime();
   });
 });
 

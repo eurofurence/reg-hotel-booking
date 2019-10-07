@@ -1,8 +1,16 @@
-input[type="radio"], input[type="checkbox"] {
+input[type="radio"],
+input[type="checkbox"] {
   margin: auto;
   position: relative;
   top: 2px;
 }
+
+input:invalid {
+  border: 1px solid #ff5555;
+  background-color: #ffdddd;
+  color: #880000;
+}
+
 .btn-group {
   white-space: nowrap;
 }

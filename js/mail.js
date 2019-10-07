@@ -4,6 +4,7 @@ $(document).ready(function() {
   loadConfig(function(config) {
     loadTemplate(config.mail.template, function(template) {
       render(config, template);
+      loadTime(config, template);
     });
   });
 });
@@ -43,59 +44,61 @@ function render(config, template) {
     { textSource: document.getElementById("email") },
     copyMailContents
   );
-
-  var keywords = config.keywords;
-  var configKeywords = Object.keys(keywords);
-  for (var i = 0; i < configKeywords.length; i++) {
-    var value = keywords[configKeywords[i]];
-    if (typeof value === "object") {
-      setupSecretLoader(config, template, configKeywords[i]);
-    }
-  }
 }
 
-function setupSecretLoader(config, template, key) {
-  var value = config.keywords[key];
-  var date = new Date(value.time);
-  function secretLoader() {
-    var now = Date.now();
-    if (date.valueOf() <= now) {
-      $("#secret-timer").text(getText("loading"));
-      $.ajax(value.location, {
-        success: function(data) {
-          config.keywords[key] = data;
-          render(config, template);
-          $("#countdown-text").remove();
-          $("#ready-text").css("display", "block");
-        },
-        error: function(xhr, status, error) {
-          $("#secret-timer").css("color", "red");
-          $("#secret-timer").text(getText("error") + error + ")");
+function loadTime(config, template) {
+  $.ajax(config.timeServer, {
+    success: function(timeResponse) {
+      $("#timeError").css("display", "none");
+      if (timeResponse.secret) {
+        config.keywords.secret = timeResponse.secret;
+        render(config, template);
+        $("#countdown-text").remove();
+        $("#ready-text").css("display", "block");
+      } else {
+        var start = Date.now();
+        var end = start + timeResponse.countdown * 1000;
+
+        function countdownUpdater() {
+          var now = Date.now();
+          if (end <= now) {
+            $("#secret-timer").text(getText("loading"));
+            loadTime(config, template);
+          } else {
+            var useRelative = end - now < 3600000;
+
+            var prefix = getPrefix(language, useRelative);
+
+            var timeString = new Date(
+              timeResponse.targetTime
+            ).toLocaleDateString(language, {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+              hour: "2-digit",
+              minute: "2-digit"
+            });
+            if (useRelative) {
+              timeString = formatRemainingTime(end - now);
+            }
+
+            document.getElementById("secret-timer").textContent =
+              prefix + " " + timeString;
+            window.requestAnimationFrame(countdownUpdater);
+          }
         }
-      });
-    } else {
-      var useRelative = date - now < 3600000;
-
-      var prefix = getPrefix(language, useRelative);
-
-      var timeString = date.toLocaleDateString(language, {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        hour: "2-digit",
-        minute: "2-digit"
-      });
-      if (useRelative) {
-        timeString = formatRemainingTime(date - now);
+        requestAnimationFrame(countdownUpdater);
       }
+    },
+    error: function() {
+      $("#timeError").css("display", "block");
 
-      document.getElementById("secret-timer").textContent =
-        prefix + " " + timeString;
-      window.requestAnimationFrame(secretLoader);
+      setTimeout(function() {
+        loadTime(config, template);
+      }, 5000);
     }
-  }
-  requestAnimationFrame(secretLoader);
+  });
 }
 
 function copyMailContents(event) {
@@ -119,6 +122,7 @@ function loadTemplate(url, cb) {
 function compileData(data) {
   var compiled = JSON.parse(localStorage.getItem("hotelFormData") || "{}");
 
+  compiled.secret = "■■■■■■■";
   var configKeywords = Object.keys(data.keywords);
   for (var i = 0; i < configKeywords.length; i++) {
     var value = data.keywords[configKeywords[i]];
