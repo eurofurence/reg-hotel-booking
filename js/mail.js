@@ -55,6 +55,7 @@ function loadTime(config, template) {
         render(config, template);
         $("#countdown-text").remove();
         $("#ready-text").css("display", "block");
+        $("#ready-to").css("display", "block");
       } else {
         var start = Date.now();
         var end = start + timeResponse.countdown * 1000;
