@@ -287,6 +287,7 @@ function setupFormValueStoring() {
   $("#form").on("input", storeFormValues);
   $("#arrival").change(storeFormValues);
   $("#departure").change(storeFormValues);
+  $("#automated_test_config").change(storeFormValues);
 }
 
 function preventSubmitUntilConfirmed() {
