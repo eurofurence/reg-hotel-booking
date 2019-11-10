@@ -241,6 +241,9 @@ function storeFormValues() {
   data.arrival = dateConv(elements.arrival.value);
   data.departure = dateConv(elements.departure.value);
 
+  // do not store the popup message text, or else it will have the wrong language after language switch
+  data.cannot_submit = undefined;
+
   localStorage.setItem("hotelFormData", JSON.stringify(data));
 
   potentialChangeInSubmitState();
