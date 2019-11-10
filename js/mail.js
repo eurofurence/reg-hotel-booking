@@ -119,13 +119,13 @@ function loadTemplate(url, cb) {
   });
 }
 
-function compileData(data) {
+function compileData(config) {
   var compiled = JSON.parse(localStorage.getItem("hotelFormData") || "{}");
 
   compiled.secret = "■■■■■■■";
-  var configKeywords = Object.keys(data.keywords);
+  var configKeywords = Object.keys(config.keywords);
   for (var i = 0; i < configKeywords.length; i++) {
-    var value = data.keywords[configKeywords[i]];
+    var value = config.keywords[configKeywords[i]];
     if (typeof value === "string") {
       compiled[configKeywords[i]] = value;
     } else {
@@ -133,11 +133,15 @@ function compileData(data) {
     }
   }
 
+  // handle conversion from iso date to local date
+  compiled.arrival = dateFormatHelper(compiled.arrival, config.dates.dateFormat);
+  compiled.departure = dateFormatHelper(compiled.departure, config.dates.dateFormat);
+
   compiled.hasSecondPerson =
     compiled.roomsize === "2" || compiled.roomsize === "3";
   compiled.hasThirdPerson = compiled.roomsize === "3";
 
-  compiled.roomtype = data.roomtypes[compiled.roomtype - 1].name;
+  compiled.roomtype = config.roomtypes[compiled.roomtype - 1].name;
 
   return compiled;
 }

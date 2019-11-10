@@ -1,6 +1,6 @@
 Sehr geehrte Damen und Herren,
 
-I möchte die folgende Reservierung vornehmen:
+Ich möchte die folgende Reservierung vornehmen:
 
 Keyword:     {{keyword}}
 Codewort:    {{secret}}

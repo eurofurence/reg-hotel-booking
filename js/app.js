@@ -137,9 +137,7 @@ function dateConv(str) {
 }
 
 // convert an iso date to a locale formatted date
-function dateFormat(str) {
-  if (!config) return;
-  var format = config.dates.dateFormat;
+function dateFormatHelper(str, format) {
   var res = str;
   if (format === "mm/dd/yyyy") {
     res = res.replace(/([0-9]{4})-([0-9]{2})-([0-9]{2})/, "$2/$3/$1");
@@ -150,6 +148,12 @@ function dateFormat(str) {
     return "";
   }
   return res;
+}
+
+function dateFormat(str) {
+  if (!config) return;
+  var format = config.dates.dateFormat;
+  return dateFormatHelper(str, format);
 }
 
 function fieldErrorMarker(surroundingSpanId, isOk) {
