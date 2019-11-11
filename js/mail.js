@@ -47,7 +47,14 @@ function render(config, template) {
 }
 
 function loadTime(config, template) {
-  $.ajax(config.timeServer, {
+  var extraParams = '';
+  if (overrideActiveForAutomatedTests()) {
+    // setting this parameter switches the backend to demo mode
+    extraParams = '?currentTime=2099-12-24T18:00:00';
+    config.mail.recipient = "oriyungjkthx@mailinator.com";
+  }
+
+  $.ajax(config.timeServer + extraParams, {
     success: function(timeResponse) {
       $("#timeError").css("display", "none");
       if (timeResponse.secret) {
@@ -55,6 +62,7 @@ function loadTime(config, template) {
         render(config, template);
         $("#countdown-text").remove();
         $("#ready-text").css("display", "block");
+        $("#ready-to").css("display", "block");
       } else {
         var start = Date.now();
         var end = start + timeResponse.countdown * 1000;
@@ -119,13 +127,18 @@ function loadTemplate(url, cb) {
   });
 }
 
-function compileData(data) {
+function overrideActiveForAutomatedTests() {
+  var compiled = JSON.parse(localStorage.getItem("hotelFormData") || "{}");
+  return (compiled.automated_test_config === "showDemosecret");
+}
+
+function compileData(config) {
   var compiled = JSON.parse(localStorage.getItem("hotelFormData") || "{}");
 
   compiled.secret = "■■■■■■■";
-  var configKeywords = Object.keys(data.keywords);
+  var configKeywords = Object.keys(config.keywords);
   for (var i = 0; i < configKeywords.length; i++) {
-    var value = data.keywords[configKeywords[i]];
+    var value = config.keywords[configKeywords[i]];
     if (typeof value === "string") {
       compiled[configKeywords[i]] = value;
     } else {
@@ -133,11 +146,15 @@ function compileData(data) {
     }
   }
 
+  // handle conversion from iso date to local date
+  compiled.arrival = dateFormatHelper(compiled.arrival, config.dates.dateFormat);
+  compiled.departure = dateFormatHelper(compiled.departure, config.dates.dateFormat);
+
   compiled.hasSecondPerson =
     compiled.roomsize === "2" || compiled.roomsize === "3";
   compiled.hasThirdPerson = compiled.roomsize === "3";
 
-  compiled.roomtype = data.roomtypes[compiled.roomtype - 1].name;
+  compiled.roomtype = config.roomtypes[compiled.roomtype - 1].name;
 
   return compiled;
 }

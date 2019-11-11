@@ -80,11 +80,11 @@
       <div class="row" id="countdown-text" style="margin-bottom: 3em;">
         <div class="col-xs-12">
           <p>
-            This is the preview of the email you have to send. The black boxes
+            This is a preview of the email you have to send. The black boxes
             (■■■■■■■) represent the locations where the secret has to be
             inserted. However, the secret is not revealed yet.
           </p>
-          <p><button class="btn btn-primary btn-sm" disabled>Do not send the email yet!</button></p>
+          <p><button id="not-ready" class="btn btn-primary btn-sm" disabled>Do not send the email yet!</button></p>
           <p>
             Once the secret is revealed, it is automatically loaded and added in
             the correct locations. You do not need to reload the page for that.
@@ -105,7 +105,7 @@
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" id="ready-to" style="display: none;">
         <label class="control-label col-xs-2" for="email_to">To:</label>
         <div class="col-xs-10">
           <input class="form-control" id="email_to" name="email_to" value="" disabled />

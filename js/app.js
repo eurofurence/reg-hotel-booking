@@ -117,6 +117,7 @@ function initializeDatepicker(dates) {
   });
 }
 
+// convert a locale formatted date to an ISO date
 function dateConv(str) {
   if (!config) return;
   var format = config.dates.dateFormat;
@@ -133,6 +134,26 @@ function dateConv(str) {
     return "";
   }
   return res;
+}
+
+// convert an iso date to a locale formatted date
+function dateFormatHelper(str, format) {
+  var res = str;
+  if (format === "mm/dd/yyyy") {
+    res = res.replace(/([0-9]{4})-([0-9]{2})-([0-9]{2})/, "$2/$3/$1");
+  } else if (format === "dd.mm.yyyy") {
+    res = res.replace(/([0-9]{4})-([0-9]{2})-([0-9]{2})/, "$3.$2.$1");
+  } else {
+    alert("unsupported date format: " + format);
+    return "";
+  }
+  return res;
+}
+
+function dateFormat(str) {
+  if (!config) return;
+  var format = config.dates.dateFormat;
+  return dateFormatHelper(str, format);
 }
 
 function fieldErrorMarker(surroundingSpanId, isOk) {
@@ -219,6 +240,14 @@ function storeFormValues() {
   }
   data.roomsize = elements.roomsize.value;
   data.roomtype = elements.roomtype.value;
+
+  // deal with potential date format change due to language switch by storing iso dates
+  data.arrival = dateConv(elements.arrival.value);
+  data.departure = dateConv(elements.departure.value);
+
+  // do not store the popup message text, or else it will have the wrong language after language switch
+  data.cannot_submit = undefined;
+
   localStorage.setItem("hotelFormData", JSON.stringify(data));
 
   potentialChangeInSubmitState();
@@ -243,6 +272,13 @@ function restoreFormValues() {
   }
   elements.roomsize.value = values.roomsize;
   elements.roomtype.value = values.roomtype;
+
+  // deal with potential date format change due to language switch
+  if (values.arrival && values.departure) {
+    elements.arrival.value = dateFormat(values.arrival);
+    elements.departure.value = dateFormat(values.departure);
+  }
+
   changedRoomsize(values.roomsize);
   changedRoomtype(values.roomtype);
 }
@@ -251,6 +287,7 @@ function setupFormValueStoring() {
   $("#form").on("input", storeFormValues);
   $("#arrival").change(storeFormValues);
   $("#departure").change(storeFormValues);
+  $("#automated_test_config").change(storeFormValues);
 }
 
 function preventSubmitUntilConfirmed() {
