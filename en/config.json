@@ -1,38 +1,45 @@
 {
   "roomtypes": [
     {
-      "name": "Concert Hall",
-      "infolink": "http://localhost/concerthall",
-      "price1": 84,
-      "price2": 99,
-      "price3": 104
+      "name": "Standard Room",
+      "infolink": "https://www.estrel.com/en/hotel/rooms-suites/standard-rooms.html",
+      "price1": 90,
+      "price2": 120,
+      "price3": 195
     },
     {
-      "name": "Stadium",
-      "infolink": "http://localhost/stadium",
-      "price1": 85,
-      "price2": 100,
-      "price3": 105
+      "name": "Deluxe Room",
+      "infolink": "https://estrel.com/en/hotel/rooms-suites/deluxe-rooms.html",
+      "price1": 105,
+      "price2": 140,
+      "price3": 210
     },
     {
-      "name": "Shack in the Wilderness",
-      "infolink": "http://localhost/shack",
-      "price1": 14,
-      "price2": 15,
-      "price3": 19
+      "name": "Junior Suite",
+      "infolink": "https://estrel.com/en/hotel/rooms-suites/junior-suites.html",
+      "price1": 153,
+      "price2": 178,
+      "price3": 240
+    },
+    {
+      "name": "Deluxe Suite",
+      "infolink": "https://estrel.com/en/hotel/rooms-suites/suites.html",
+      "price1": 173,
+      "price2": 208,
+      "price3": 270
     }
   ],
   "dates": {
     "dateFormat": "mm/dd/yyyy",
     "arrival": {
-      "earliest": "08/11/2019",
-      "default": "08/14/2019",
-      "latest": "08/19/2019"
+      "earliest": "08/16/2020",
+      "default": "08/19/2020",
+      "latest": "08/22/2020"
     },
     "departure": {
-      "earliest": "08/11/2019",
-      "default": "08/18/2019",
-      "latest": "08/19/2019"
+      "earliest": "08/20/2020",
+      "default": "08/23/2020",
+      "latest": "08/24/2020"
     }
   },
   "timeServer": "http://example.com/secret/",
@@ -42,6 +49,6 @@
     "template": "mail.txt"
   },
   "keywords": {
-    "keyword": "Demo Convention"
+    "keyword": "Eurofurence 2020"
   }
 }
