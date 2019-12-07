@@ -3,7 +3,7 @@ Dear Sir or Madam!
 I would like to make the following reservation:
 
 Keyword:     {{keyword}}
-My secret:   {{secret}}
+Codeword:    {{secret}}
 
 Room Type:   {{roomtype}}
 Occupancy:   {{roomsize}} person(s)
