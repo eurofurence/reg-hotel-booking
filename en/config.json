@@ -9,21 +9,21 @@
     },
     {
       "name": "Deluxe Room",
-      "infolink": "https://estrel.com/en/hotel/rooms-suites/deluxe-rooms.html",
+      "infolink": "https://www.estrel.com/en/hotel/rooms-suites/deluxe-rooms.html",
       "price1": 105,
       "price2": 140,
       "price3": 210
     },
     {
       "name": "Junior Suite",
-      "infolink": "https://estrel.com/en/hotel/rooms-suites/junior-suites.html",
+      "infolink": "https://www.estrel.com/en/hotel/rooms-suites/junior-suites.html",
       "price1": 153,
       "price2": 178,
       "price3": 240
     },
     {
       "name": "Deluxe Suite",
-      "infolink": "https://estrel.com/en/hotel/rooms-suites/suites.html",
+      "infolink": "https://www.estrel.com/en/hotel/rooms-suites/suites.html",
       "price1": 173,
       "price2": 208,
       "price3": 270
