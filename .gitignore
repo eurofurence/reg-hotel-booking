@@ -66,11 +66,15 @@ typings/
 # next.js build output
 .next
 
-# dependencies - download them to your local installation
-css/bootstrap-bootswatch-theme-lumen.min.css
+# dependencies - download them to your local installation using npm
+js/jquery.min.js
+js/bootstrap.min.js
 css/bootstrap-datepicker3.min.css
 js/bootstrap-datepicker.min.js
-js/bootstrap.min.js
-js/jquery-3.2.1.min.js
+locales/bootstrap-datepicker.de.min.js
+locales/bootstrap-datepicker.en-GB.min.js
+css/bootstrap-bootswatch-theme-lumen.min.css
 
-
+# npm files
+node_modules
+package-lock.json

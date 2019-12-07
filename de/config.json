@@ -42,7 +42,7 @@
       "latest": "24.08.2020"
     }
   },
-  "timeServer": "http://example.com/secret/",
+  "timeServer": "http://localhost:9091/api/rest/v1/countdown",
   "mail": {
     "recipient": "demo@mailinator.com",
     "subject": "Zimmeranfrage {{keyword}} - {{secret}}",
