@@ -314,6 +314,8 @@ function setupFormValueStoring() {
   $("#form").on("input", storeFormValues);
   $("#arrival").change(storeFormValues);
   $("#departure").change(storeFormValues);
+  $("input[name=roomsize]").change(storeFormValues);
+  $("input[name=roomtype]").change(storeFormValues);
   $("#automated_test_config").change(storeFormValues);
 }
 
