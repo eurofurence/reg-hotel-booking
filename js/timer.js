@@ -4,6 +4,7 @@ $(document).ready(function() {
   loadConfig(function(config) {
     function loadTime() {
       $.ajax(config.timeServer, {
+        cache: false,
         success: function(timeResponse) {
           $("#timeError").css("display", "none");
           if (timeResponse.countdown <= 0) {
