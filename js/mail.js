@@ -55,6 +55,7 @@ function loadTime(config, template) {
   }
 
   $.ajax(config.timeServer + extraParams, {
+    cache: false,
     success: function(timeResponse) {
       $("#timeError").css("display", "none");
       if (timeResponse.secret) {

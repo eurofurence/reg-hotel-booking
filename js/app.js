@@ -238,8 +238,22 @@ function storeFormValues() {
   for (var i = 0; i < elements.length; i++) {
     data[elements[i].id] = elements[i].value;
   }
-  data.roomsize = elements.roomsize.value;
-  data.roomtype = elements.roomtype.value;
+  // make this work on IE and other browsers at the same time
+  // data.roomsize = elements.roomsize.value;
+  // data.roomtype = elements.roomtype.value;
+  var roomsizeRadios = document.getElementsByName('roomsize');
+  for (i = 0; i < roomsizeRadios.length; i++) {
+    if (roomsizeRadios[i].checked) {
+      data['roomsize'] = roomsizeRadios[i].value;
+    }
+  }
+  var roomtypeRadios = document.getElementsByName('roomtype');
+  for (i = 0; i < roomtypeRadios.length; i++) {
+    if (roomtypeRadios[i].checked) {
+      data['roomtype'] = roomtypeRadios[i].value;
+      break;
+    }
+  }
 
   // deal with potential date format change due to language switch by storing iso dates
   data.arrival = dateConv(elements.arrival.value);
@@ -256,12 +270,12 @@ function storeFormValues() {
 function restoreFormValues() {
   var values = JSON.parse(window.localStorage.getItem("hotelFormData") || "{}");
 
-  if (typeof values.roomsize === "undefined") {
-    values.roomsize = "1";
+  if (typeof values['roomsize'] === "undefined") {
+    values['roomsize'] = "1";
   }
 
-  if (typeof values.roomtype === "undefined") {
-    values.roomtype = "1";
+  if (typeof values['roomtype'] === "undefined") {
+    values['roomtype'] = "1";
   }
 
   var elements = document.getElementById("form").elements;
@@ -270,8 +284,21 @@ function restoreFormValues() {
       elements[i].value = values[elements[i].id];
     }
   }
-  elements.roomsize.value = values.roomsize;
-  elements.roomtype.value = values.roomtype;
+  // make this work on IE and other browsers at the same time
+  // elements.roomsize.value = values.roomsize;
+  // elements.roomtype.value = values.roomtype;
+  var roomsizeRadios = document.getElementsByName('roomsize');
+  for (i = 0; i < roomsizeRadios.length; i++) {
+    if (values['roomsize'] === roomsizeRadios[i].value) {
+      roomsizeRadios[i].checked = true;
+    }
+  }
+  var roomtypeRadios = document.getElementsByName('roomtype');
+  for (i = 0; i < roomtypeRadios.length - 1; i++) {
+    if (values['roomtype'] === roomtypeRadios[i].value) {
+      roomtypeRadios[i].checked = true;
+    }
+  }
 
   // deal with potential date format change due to language switch
   if (values.arrival && values.departure) {
@@ -287,6 +314,8 @@ function setupFormValueStoring() {
   $("#form").on("input", storeFormValues);
   $("#arrival").change(storeFormValues);
   $("#departure").change(storeFormValues);
+  $("input[name=roomsize]").change(storeFormValues);
+  $("input[name=roomtype]").change(storeFormValues);
   $("#automated_test_config").change(storeFormValues);
 }
 
