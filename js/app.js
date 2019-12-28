@@ -271,7 +271,7 @@ function restoreFormValues() {
   var values = JSON.parse(window.localStorage.getItem("hotelFormData") || "{}");
 
   if (typeof values['roomsize'] === "undefined") {
-    values['roomsize'] = "1";
+    values['roomsize'] = "2";
   }
 
   if (typeof values['roomtype'] === "undefined") {
