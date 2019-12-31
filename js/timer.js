@@ -39,7 +39,9 @@ $(document).ready(function() {
 
                 document.getElementById("secret-timer").textContent =
                   prefix + " " + timeString;
-                window.requestAnimationFrame(countdownUpdater);
+                setTimeout(function() {
+                  window.requestAnimationFrame(countdownUpdater);
+                }, 100);
               }
             }
             requestAnimationFrame(countdownUpdater);
