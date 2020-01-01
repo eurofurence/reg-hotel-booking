@@ -23,18 +23,20 @@ $(document).ready(function() {
 
                 var prefix = getPrefix(language, useRelative);
 
-                var timeString = new Date(
-                  timeResponse.targetTime
-                ).toLocaleDateString(language, {
-                  weekday: "long",
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                  hour: "2-digit",
-                  minute: "2-digit"
-                });
+                var timeString = '';
                 if (useRelative) {
                   timeString = formatRemainingTime(end - now);
+                } else {
+                  timeString = new Date(
+                      timeResponse.targetTime
+                  ).toLocaleDateString(language, {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit"
+                  });
                 }
 
                 document.getElementById("secret-timer").textContent =
