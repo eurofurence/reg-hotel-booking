@@ -78,3 +78,7 @@ css/bootstrap-bootswatch-theme-lumen.min.css
 # npm files
 node_modules
 package-lock.json
+
+jmeter/**/out
+jmeter/**/reports
+jmeter/**/*.log
