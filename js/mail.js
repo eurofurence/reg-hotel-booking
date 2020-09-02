@@ -81,17 +81,24 @@ function loadTime(config, template) {
             var timeString = '';
             if (useRelative) {
               timeString = formatRemainingTime(end - now);
+
+              $("#secret-timer-berlin-tz").css("display", "none");
             } else {
-              timeString = new Date(
-                  timeResponse.targetTime
-              ).toLocaleDateString(language, {
+              var targetTime = new Date(timeResponse.targetTime)
+              var timeFormat = {
                 weekday: "long",
                 year: "numeric",
                 month: "long",
                 day: "numeric",
                 hour: "2-digit",
                 minute: "2-digit"
-              });
+              }
+
+              timeString = targetTime.toLocaleDateString(language, timeFormat);
+              var berlinTimeString = targetTime.toLocaleDateString(language, { ...timeFormat, timeZone: 'Europe/Berlin', timeZoneName: 'short' });
+
+              $("#secret-timer-berlin-tz").text(`(${berlinTimeString})`);
+              $("#secret-timer-berlin-tz").css("display", "block");
             }
 
             document.getElementById("secret-timer").textContent =
