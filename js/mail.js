@@ -50,7 +50,7 @@ function loadTime(config, template) {
   var extraParams = '';
   if (overrideActiveForAutomatedTests()) {
     // setting this parameter switches the backend to demo mode
-    extraParams = '?currentTime=2099-12-24T18:00:00';
+    extraParams = '?currentTime=2099-12-24T18:00:00-01:00';
     config.mail.recipient = "oriyungjkthx@mailinator.com";
   }
 
