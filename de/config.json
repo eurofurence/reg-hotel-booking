@@ -3,52 +3,52 @@
     {
       "name": "Standard Zimmer",
       "infolink": "https://www.estrel.com/de/hotel/zimmer-suiten/standard-zimmer.html",
-      "price1": 115,
-      "price2": 140,
-      "price3": 215
+      "price1": 170,
+      "price2": 180,
+      "price3": 255
     },
     {
       "name": "Deluxe Zimmer",
       "infolink": "https://www.estrel.com/de/hotel/zimmer-suiten/deluxe-zimmer.html",
-      "price1": 130,
-      "price2": 160,
-      "price3": 230
+      "price1": 190,
+      "price2": 200,
+      "price3": 270
     },
     {
       "name": "Junior Suite",
       "infolink": "https://www.estrel.com/de/hotel/zimmer-suiten/junior-suiten.html",
-      "price1": 178,
-      "price2": 198,
-      "price3": 260
+      "price1": 228,
+      "price2": 238,
+      "price3": 300
     },
     {
       "name": "Deluxe Suite",
       "infolink": "https://www.estrel.com/de/hotel/zimmer-suiten/suiten.html",
-      "price1": 198,
-      "price2": 228,
-      "price3": 290
+      "price1": 258,
+      "price2": 268,
+      "price3": 330
     }
   ],
   "dates": {
     "dateFormat": "dd.mm.yyyy",
     "arrival": {
-      "earliest": "16.08.2020",
-      "default": "19.08.2020",
-      "latest": "22.08.2020"
+      "earliest": "21.08.2022",
+      "default": "24.08.2022",
+      "latest": "26.08.2022"
     },
     "departure": {
-      "earliest": "20.08.2020",
-      "default": "23.08.2020",
-      "latest": "24.08.2020"
+      "earliest": "25.08.2022",
+      "default": "28.08.2022",
+      "latest": "29.08.2022"
     }
   },
-  "timeServer": "http://localhost:9091/api/rest/v1/countdown",
+  "timeServer": "http://localhost:9092/api/rest/v1/countdown",
   "mail": {
     "recipient": "demo@mailinator.com",
     "subject": "Zimmeranfrage {{keyword}} - {{secret}}",
     "template": "mail.txt"
   },
   "keywords": {
-    "keyword": "Eurofurence 2020"
+    "keyword": "Eurofurence 2022"
   }
 }
