@@ -56,6 +56,10 @@ function loadTime(config, template) {
 
   $.ajax(config.timeServer + extraParams, {
     cache: false,
+    xhrFields: {
+      // Needed for local testing or if we introduce api.eurofurence.org at some point
+      withCredentials: true
+    },
     success: function(timeResponse) {
       $("#timeError").css("display", "none");
       if (timeResponse.secret) {
