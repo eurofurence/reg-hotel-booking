@@ -262,13 +262,13 @@ function storeFormValues() {
   // do not store the popup message text, or else it will have the wrong language after language switch
   data.cannot_submit = undefined;
 
-  localStorage.setItem("hotelFormData", JSON.stringify(data));
+  localStorage.setItem("hotelFormData2022", JSON.stringify(data));
 
   potentialChangeInSubmitState();
 }
 
 function restoreFormValues() {
-  var values = JSON.parse(window.localStorage.getItem("hotelFormData") || "{}");
+  var values = JSON.parse(window.localStorage.getItem("hotelFormData2022") || "{}");
 
   if (typeof values['roomsize'] === "undefined") {
     values['roomsize'] = "2";

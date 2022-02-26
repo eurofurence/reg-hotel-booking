@@ -140,12 +140,12 @@ function loadTemplate(url, cb) {
 }
 
 function overrideActiveForAutomatedTests() {
-  var compiled = JSON.parse(localStorage.getItem("hotelFormData") || "{}");
+  var compiled = JSON.parse(localStorage.getItem("hotelFormData2022") || "{}");
   return (compiled.automated_test_config === "showDemosecret");
 }
 
 function compileData(config) {
-  var compiled = JSON.parse(localStorage.getItem("hotelFormData") || "{}");
+  var compiled = JSON.parse(localStorage.getItem("hotelFormData2022") || "{}");
 
   compiled.secret = "■■■■■■■";
   var configKeywords = Object.keys(config.keywords);
