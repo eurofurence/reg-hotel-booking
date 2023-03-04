@@ -1,3 +1,7 @@
+# Deprecation Notice
+
+ARCHIVED - no longer needed now we don't have the mail booking process any more
+
 # Eurofurence Hotelbooking App
 
 This is a statically hostable app for creating a hotel room reservation email. It allows the user to enter personal details required to book a hotel room and generate an email text based on a template.
